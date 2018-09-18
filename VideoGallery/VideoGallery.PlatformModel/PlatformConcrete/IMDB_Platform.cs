@@ -7,6 +7,9 @@ using VideoGallery.PlatformModel.Abstract;
 
 namespace VideoGallery.PlatformModel.PlatformConcrete
 {
+    /// <summary>
+    /// Платформа IMDB
+    /// </summary>
     public class IMDB_Platform : IPlatform
     {
         SearchStrategyAbstract _strategyToSearch;
@@ -28,15 +31,16 @@ namespace VideoGallery.PlatformModel.PlatformConcrete
             this._strategyToSearch = strategyToSearch;
         }
 
-
         /// <summary>
-        /// Поиск
+        /// Метод создания строки запроса, используя название или часть названия фильма
         /// </summary>
-        /// <param name="queryBuilder"></param>
+        /// <param name="FilmName"></param>
         /// <returns></returns>
-        public IEnumerable<IFilmModel> Search(IQuerySearchFilmBuilder queryBuilder)
+        public IQueryModel CreateQueryResponseByFilmName (string FilmName)
         {
-            return _strategyToSearch.SearchFilmsByStringQuery(queryBuilder);
+            return _strategyToSearch.ConstructQuerySearchByFilmName(FilmName);
+
         }
+
     }
 }

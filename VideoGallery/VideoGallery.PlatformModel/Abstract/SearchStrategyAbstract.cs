@@ -6,8 +6,14 @@ using System.Threading.Tasks;
 
 namespace VideoGallery.PlatformModel.Abstract
 {
+    /// <summary>
+    /// Стретегия поиска для платформы
+    /// </summary>
     public abstract class SearchStrategyAbstract
     {
-        public abstract IEnumerable<IFilmModel> SearchFilmsByStringQuery(IQuerySearchFilmBuilder searchBuilder);
+
+        public abstract IQueryModel ConstructQuerySearchByFilmName(string filmname);
+        public abstract IQueryModel ConstructQuerySearchByNameAndYear(string name, string year);
+
     }
 }

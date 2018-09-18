@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace VideoGallery.PlatformModel.Abstract
 {
+    /// <summary>
+    /// Модель фильма для отображения клиенту (часть свойств необходимо перевести в наследуемые классы)
+    /// </summary>
     public abstract class IFilmModel
     {
         public int ID { get; set; }

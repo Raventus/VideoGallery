@@ -7,6 +7,9 @@ using VideoGallery.PlatformModel.Abstract;
 
 namespace VideoGallery.PlatformModel.FilmModelConcrete
 {
+    /// <summary>
+    /// Модель отображения результатов поиска, используя платформу IMDB
+    /// </summary>
     public class IMDB_FilmModel : IFilmModel
     {
 

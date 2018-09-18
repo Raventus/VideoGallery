@@ -6,8 +6,11 @@ using System.Threading.Tasks;
 
 namespace VideoGallery.PlatformModel.Abstract
 {
+    /// <summary>
+    /// Интерфейс для плафтормы, по которой осуществляется поиск
+    /// </summary>
     public interface IPlatform
     {
-        IEnumerable<IFilmModel> Search(IQuerySearchFilmBuilder queryBuilder);
+        IQueryModel CreateQueryResponseByFilmName(string FilmName);
     }
 }

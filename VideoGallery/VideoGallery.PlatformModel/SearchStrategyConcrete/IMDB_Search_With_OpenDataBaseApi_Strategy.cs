@@ -27,10 +27,13 @@ namespace VideoGallery.PlatformModel.SearchStrategyConcrete
             this._builder = builder;
         }
 
-        /// <summary>
-        /// Построение объекта запроса по названию фильма и году выпуска
-        /// </summary>
-        public IQueryModel ConstructQuerySearchByNameAndYear(string name, string year)
+       /// <summary>
+       /// Построение строки запроса, используя название фильма и год создания
+       /// </summary>
+       /// <param name="name">Название фильма </param>
+       /// <param name="year">Год создания</param>
+       /// <returns></returns>
+        public override IQueryModel ConstructQuerySearchByNameAndYear(string name, string year)
         {
             _builder.ClearQueryObject();           
             _builder.BuildNameOfFilm(name);
@@ -38,10 +41,16 @@ namespace VideoGallery.PlatformModel.SearchStrategyConcrete
             return _builder.GetQueryObject();
         }
 
-
-        public override IEnumerable<IFilmModel> SearchFilmsByStringQuery(IQuerySearchFilmBuilder searchBuilder)
+        /// <summary>
+        /// Построение строки запроса, используя название фильма
+        /// </summary>
+        /// <param name="name">Название фильма</param>
+        /// <returns></returns>
+        public override IQueryModel ConstructQuerySearchByFilmName(string name)
         {
-            throw new NotImplementedException();
+            _builder.ClearQueryObject();
+            _builder.BuildNameOfFilm(name);
+            return _builder.GetQueryObject();
         }
     }
 }

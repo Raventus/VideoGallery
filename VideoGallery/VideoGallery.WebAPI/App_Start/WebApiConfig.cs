@@ -16,8 +16,8 @@ namespace VideoGallery.WebAPI
 
             config.Routes.MapHttpRoute(
                 name: "videoGalleryApiRoute",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
+                routeTemplate: "api/{controller}/{filmName}",
+                defaults: new { filmName = RouteParameter.Optional }
             );
             config.Formatters.Remove(config.Formatters.XmlFormatter);
         }

@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace VideoGallery.PlatformModel.Abstract
 {
+    /// <summary>
+    /// Интерфейс строителя строки запроса 
+    /// </summary>
     public interface IQuerySearchFilmBuilder 
     {
         void ClearQueryObject();

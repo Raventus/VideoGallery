@@ -200,7 +200,6 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Controllers\VideoGalleryApiController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -277,6 +276,10 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\VideoGallery.Common\VideoGallery.Common.csproj">
+      <Project>{3dba50f1-d2f3-46b3-873f-17d651dc8634}</Project>
+      <Name>VideoGallery.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\VideoGallery.PlatformModel\VideoGallery.PlatformModel.csproj">
       <Project>{a7472a4c-f430-45ba-a951-47fce18d635a}</Project>
       <Name>VideoGallery.PlatformModel</Name>

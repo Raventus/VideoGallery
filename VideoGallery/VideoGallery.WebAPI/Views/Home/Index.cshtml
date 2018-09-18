@@ -1,6 +1,8 @@
 ﻿@{ 
-    ViewBag.Title = "Видео галлерея";
+    
+    ViewBag.Title = "Видео галерея";
 }
+
 <div class="col-lg-4 col-lg-offset-4" clear="both">
     <h1>
         Добро пожаловать в галерею фильмов!!!
@@ -8,8 +10,12 @@
     </h1>
 </div>
 <div class="col-lg-4 col-lg-offset-4" clear="both">
+
+</div>
+<div class="col-lg-4 col-lg-offset-4" clear="both">
     <h3>
-        Служба по поиску фильмов находится по адресу @Html.RouteLink(
+        Служба по поиску фильмов (запрос по умолчанию: GodFather):
+        @Html.RouteLink(
                                                         @Url.RouteUrl("videoGalleryApiRoute", new { controller = "videoGalleryApi", httproute = "" })
                                                         , new { controller = "videoGalleryApi", HttpRoute = true }
                                                         , "videoGalleryApiRoute"
@@ -17,4 +23,13 @@
         
 
     </h3>
+    <br />
+    <h3>Введите строку запроса и получите результат:</h3>
+    @using (Html.BeginForm("SubmitQuery", "Home"))
+    {
+        @Html.TextBox("FilmName");
+        <input type="submit" value="Получить фильмы" />
+
+        
+    }
 </div>

@@ -9,17 +9,30 @@ namespace VideoGallery.WebAPI.Tests.Controllers
     public class HomeControllerTest
     {
         [TestMethod]
-        public void Index()
+        public void Check_Result_Of_IndexMethod_Is_Not_Null()
         {
-            // Упорядочение
+            // Arrange
             HomeController controller = new HomeController();
 
-            // Действие
+            // Act
             ViewResult result = controller.Index() as ViewResult;
 
-            // Утверждение
+            // Assert
             Assert.IsNotNull(result);
-            Assert.AreEqual("Home Page", result.ViewBag.Title);
+            Assert.AreEqual("Видео галерея", result.ViewBag.Title);
+        }
+
+        [TestMethod]
+        public void Check_RightRedirection_Of_SumbitQueryMethod ()
+        {
+            // Arrange
+            HomeController controller = new HomeController();
+
+            // Act
+            var routeREsult = (controller.SubmitQuery("GodFuther") as RedirectToRouteResult);
+            // Assert
+            Assert.AreEqual("videoGalleryApiRoute", routeREsult.RouteName, "Неправильное название маршрута для перенаправления");
+            Assert.AreEqual("VideoGalleryApi", routeREsult.RouteValues["controller"], "Неправильно задан контроллер");
         }
     }
 }
