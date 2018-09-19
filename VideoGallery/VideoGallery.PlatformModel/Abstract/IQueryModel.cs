@@ -13,7 +13,9 @@ namespace VideoGallery.PlatformModel.Abstract
     {
         public string FilmName { get; set; }
         public string YearOfCreation { get; set;}
-
+        /// <summary>
+        /// Полная строка для запроса со стороннего сервера
+        /// </summary>
         public string FullQueryString { get; set; }
 
     }

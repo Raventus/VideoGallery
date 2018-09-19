@@ -108,6 +108,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\VideoGallery.PlatformModel\VideoGallery.PlatformModel.csproj">
+      <Project>{a7472a4c-f430-45ba-a951-47fce18d635a}</Project>
+      <Name>VideoGallery.PlatformModel</Name>
+    </ProjectReference>
     <ProjectReference Include="..\VideoGallery.WebAPI\VideoGallery.WebAPI.csproj">
       <Project>{344E2C75-4653-4680-925F-0227056E1B17}</Project>
       <Name>VideoGallery.WebAPI</Name>

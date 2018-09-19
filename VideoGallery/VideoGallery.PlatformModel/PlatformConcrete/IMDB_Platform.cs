@@ -12,12 +12,12 @@ namespace VideoGallery.PlatformModel.PlatformConcrete
     /// </summary>
     public class IMDB_Platform : IPlatform
     {
-        SearchStrategyAbstract _strategyToSearch;
+        Strategy_SearchAbstract _strategyToSearch;
         /// <summary>
         /// Конструктор платформы для поиска фильмов IMDB
         /// </summary>
         /// <param name="strategyToSearch">Стратегия для поиска</param>
-        public IMDB_Platform(SearchStrategyAbstract strategyToSearch)
+        public IMDB_Platform(Strategy_SearchAbstract strategyToSearch)
         {
             this._strategyToSearch = strategyToSearch;
         }
@@ -26,7 +26,7 @@ namespace VideoGallery.PlatformModel.PlatformConcrete
         /// Методы замен стратегии поиска для платформы IMDB
         /// </summary>
         /// <param name="strategyToSearch">Стратегия для замены</param>
-        public void ChangeSearchStrategy(SearchStrategyAbstract strategyToSearch)
+        public void ChangeSearchStrategy(Strategy_SearchAbstract strategyToSearch)
         {
             this._strategyToSearch = strategyToSearch;
         }

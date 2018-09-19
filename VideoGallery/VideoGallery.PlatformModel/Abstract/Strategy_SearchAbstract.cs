@@ -9,7 +9,7 @@ namespace VideoGallery.PlatformModel.Abstract
     /// <summary>
     /// Стретегия поиска для платформы
     /// </summary>
-    public abstract class SearchStrategyAbstract
+    public abstract class Strategy_SearchAbstract
     {
 
         public abstract IQueryModel ConstructQuerySearchByFilmName(string filmname);

@@ -69,7 +69,7 @@ namespace VideoGallery.WebAPI.App_Start
         {
             kernel.Bind<IPlatform>().To<IMDB_Platform>().WithConstructorArgument(
                            "strategyToSearch"
-                           , new IMDB_Search_With_OpenDataBaseApi_Strategy(new IMDB_QuerySearchFilmBuilder_With_OpenDataBaseApi()));
+                           , new Strategy_IMDB_Search_With_OpenDataBaseApi(new Builder_QuerySearch_IMDB_With_OpenDataBaseApi()));
             //  System.Web.Mvc.DependencyResolver.SetResolver(new NinjectDependencyResolver(kernel));
         }        
     }

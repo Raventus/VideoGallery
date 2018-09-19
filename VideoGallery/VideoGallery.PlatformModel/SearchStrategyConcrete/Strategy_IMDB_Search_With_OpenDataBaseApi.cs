@@ -10,19 +10,19 @@ namespace VideoGallery.PlatformModel.SearchStrategyConcrete
     /// <summary>
     /// Стратегия поиска фильмов на платформе IMDB используя OpenDataBaseApi
     /// </summary>
-    public class IMDB_Search_With_OpenDataBaseApi_Strategy : SearchStrategyAbstract
+    public class Strategy_IMDB_Search_With_OpenDataBaseApi : Strategy_SearchAbstract
     {
-        IQuerySearchFilmBuilder _builder;
+        IBuilder_QuerySearchFilm _builder;
         /// <summary>
         /// Конструктор стратегии поиска 
         /// </summary>
         /// <param name="builder">Строитель объекта для запроса</param>
-        public IMDB_Search_With_OpenDataBaseApi_Strategy(IQuerySearchFilmBuilder builder)
+        public Strategy_IMDB_Search_With_OpenDataBaseApi(IBuilder_QuerySearchFilm builder)
         {
             this._builder = builder;
         }
 
-        public void ChangeBuilder(IQuerySearchFilmBuilder builder)
+        public void ChangeBuilder(IBuilder_QuerySearchFilm builder)
         {
             this._builder = builder;
         }

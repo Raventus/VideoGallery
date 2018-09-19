@@ -16,15 +16,15 @@ namespace VideoGallery.Common.WebCommon
         /// <summary>
         ///  Отправка запроса, используя строку запроса (полностью заполненную клиентом)
         /// </summary>
-        /// <param name="Request">строка запроса</param>
+        /// <param name="requestString">строка запроса</param>
         /// <returns>Контент от стороннего сервера</returns>
-        public static async Task <string> GetRequestByFullQueryStringAsync (string Request)
+        public static async Task <string> GetResponseByFullQueryStringAsync (string requestString)
         {
-            var req = (HttpWebRequest)WebRequest.Create(Request);
+            var request = (HttpWebRequest)WebRequest.Create(requestString);
 
-            req.Method = "GET";
-            Task<WebResponse> task = req.GetResponseAsync();
-            var response = (HttpWebResponse)await task;
+            request.Method = "GET";
+            Task<WebResponse> taskForGetResponse = request.GetResponseAsync();
+            var response = (HttpWebResponse)await taskForGetResponse;
             using (Stream stream = response.GetResponseStream())
             {
                 using (StreamReader reader = new StreamReader(stream))

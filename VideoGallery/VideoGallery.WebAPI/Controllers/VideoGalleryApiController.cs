@@ -48,7 +48,7 @@ namespace VideoGallery.WebAPI.Controllers
             IQueryModel QueryToThirdPartyServer = _platform.CreateQueryResponseByFilmName(filmName);
             string FullUrl = QueryToThirdPartyServer.FullQueryString;
 
-            string Response = await DoRequestToThirdPartyServer.GetRequestByFullQueryStringAsync(FullUrl);
+            string Response = await DoRequestToThirdPartyServer.GetResponseByFullQueryStringAsync(FullUrl);
             JsonResult jsonResult = new JsonResult();
             jsonResult.Data = Response;
             return jsonResult;

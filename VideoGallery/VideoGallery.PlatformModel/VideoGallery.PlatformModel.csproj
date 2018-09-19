@@ -45,13 +45,13 @@
     <Compile Include="Abstract\IPlatform.cs" />
     <Compile Include="Abstract\IQueryModel.cs" />
     <Compile Include="Abstract\IQuerySearchFilmBuilder.cs" />
-    <Compile Include="Abstract\SearchStrategyAbstract.cs" />
+    <Compile Include="Abstract\Strategy_SearchAbstract.cs" />
     <Compile Include="FilmModelConcrete\IMDB_FilmModel.cs" />
     <Compile Include="PlatformConcrete\IMDB_Platform.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="QueryBuilderConcrete\IMDB_QuerySearchFilmBuilder_With_OpenDataBaseApi.cs" />
+    <Compile Include="QueryBuilderConcrete\Builder_QuerySearch_IMDB_With_OpenDataBaseApi.cs" />
     <Compile Include="QueryModelConcrete\IMDB_QueryModel_WithOpenDataBaseApi.cs" />
-    <Compile Include="SearchStrategyConcrete\IMDB_Search_With_OpenDataBaseApi_Strategy.cs" />
+    <Compile Include="SearchStrategyConcrete\Strategy_IMDB_Search_With_OpenDataBaseApi.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Abstract\PlatformParts\" />

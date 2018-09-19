@@ -12,11 +12,11 @@ namespace VideoGallery.PlatformModel.QueryBuilderConcrete
     /// <summary>
     /// Строитель запроса для платформы IMDB, используя стратегию поиска OpenDataBaseApi 
     /// </summary>
-    public class IMDB_QuerySearchFilmBuilder_With_OpenDataBaseApi : IQuerySearchFilmBuilder
+    public class Builder_QuerySearch_IMDB_With_OpenDataBaseApi : IBuilder_QuerySearchFilm
     {
 
-        IQueryModel QueryString = new IMDB_QueryModel_WithOpenDataBaseApi();
-        NameValueCollection queryString;
+        IQueryModel QueryObject = new IMDB_QueryModel_WithOpenDataBaseApi();
+        NameValueCollection queryStringOfRequest;
         Dictionary<string, string> QueryParameterDictionary;
 
         /// <summary>
@@ -35,10 +35,10 @@ namespace VideoGallery.PlatformModel.QueryBuilderConcrete
         /// <summary>
         /// Конструктор строителя объекта запроса
         /// </summary>
-        public IMDB_QuerySearchFilmBuilder_With_OpenDataBaseApi()
+        public Builder_QuerySearch_IMDB_With_OpenDataBaseApi()
         {
            
-            queryString = System.Web.HttpUtility.ParseQueryString(string.Empty);
+            queryStringOfRequest = System.Web.HttpUtility.ParseQueryString(string.Empty);
             QueryParameterDictionary = new Dictionary<string, string>();
             FillQueryParameterDictionary();
         }
@@ -62,33 +62,33 @@ namespace VideoGallery.PlatformModel.QueryBuilderConcrete
 
         public void ClearQueryObject ()
         {
-            if (string.IsNullOrEmpty(QueryString.FilmName))
+            if (!string.IsNullOrEmpty(QueryObject.FilmName))
             {
-                QueryString.FilmName = null;
+                QueryObject.FilmName = null;
             }
-            if (string.IsNullOrEmpty(QueryString.YearOfCreation))
+            if (!string.IsNullOrEmpty(QueryObject.YearOfCreation))
             {
-                QueryString.YearOfCreation = null;
+                QueryObject.YearOfCreation = null;
             }
         }
         public void BuildNameOfFilm(string nameOfFilm)
         {
 
-            queryString[QueryParameterDictionary[_filmName]] = nameOfFilm;
+            queryStringOfRequest[QueryParameterDictionary[_filmName]] = nameOfFilm;
         }
 
         public void BuildYearOfFoundation(string yearOfFilm)
         {
-            queryString[QueryParameterDictionary[_yearOfCreation]] = yearOfFilm;
+            queryStringOfRequest[QueryParameterDictionary[_yearOfCreation]] = yearOfFilm;
         }
 
         public IQueryModel GetQueryObject()
         {
-            queryString[QueryParameterDictionary[_keyAuth]] = _authKey;
+            queryStringOfRequest[QueryParameterDictionary[_keyAuth]] = _authKey;
             UriBuilder FullQueryString = new UriBuilder (HostName);
-            FullQueryString.Query = queryString.ToString();
-            QueryString.FullQueryString = FullQueryString.ToString();
-            return QueryString;
+            FullQueryString.Query = queryStringOfRequest.ToString();
+            QueryObject.FullQueryString = FullQueryString.ToString();
+            return QueryObject;
         }
     }
 }
