@@ -10,7 +10,7 @@ namespace VideoGallery.PlatformModel.PlatformConcrete
     /// <summary>
     /// Платформа IMDB
     /// </summary>
-    public class IMDB_Platform : IPlatform
+    public class IMDB_Platform : IFilmPlatform
     {
         Strategy_SearchAbstract _strategyToSearch;
         /// <summary>

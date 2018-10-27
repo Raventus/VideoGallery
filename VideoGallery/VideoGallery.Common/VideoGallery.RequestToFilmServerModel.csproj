@@ -42,8 +42,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\IRequestToFilmDataServerStrategy.cs" />
+    <Compile Include="Abstract\IFilmSearchServer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="WebCommon\DoRequestToThirdPartyServer.cs" />
+    <Compile Include="VideoSearchServers\FilmSearchServer_for_IMDB_Platform.cs" />
+    <Compile Include="RequestFilmServerStrategy\RequestToFilmServerStrategy.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VideoGallery.PlatformModel\VideoGallery.PlatformModel.csproj">
+      <Project>{a7472a4c-f430-45ba-a951-47fce18d635a}</Project>
+      <Name>VideoGallery.PlatformModel</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

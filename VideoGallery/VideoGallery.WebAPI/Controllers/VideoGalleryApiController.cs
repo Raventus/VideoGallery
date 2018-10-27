@@ -9,14 +9,16 @@ using System.Web.Http;
 using System.Web.Http.Results;
 using System.Web.Mvc;
 using VideoGallery.Common.WebCommon;
+using VideoGallery.Common.Abstract;
 using VideoGallery.PlatformModel.Abstract;
 using VideoGallery.PlatformModel.FilmModelConcrete;
+
 
 namespace VideoGallery.WebAPI.Controllers
 {
     public class VideoGalleryApiController : ApiController
     {
-        private IPlatform _platform;
+        private IFilmSearchServer _searchServer;
 
         /// <summary>
         /// Тестовая коллекция для отображения (возможно устареет)
@@ -31,9 +33,9 @@ namespace VideoGallery.WebAPI.Controllers
         /// Конструктор api контроллера по поиску фильмов
         /// </summary>
         /// <param name="platform">Платформа, по которой осуществляется поиск</param>
-        public VideoGalleryApiController(IPlatform platform)
+        public VideoGalleryApiController(IFilmSearchServer searchServer)
         {
-            this._platform = platform;
+            this._searchServer = searchServer;
         }
 
         /// <summary>
@@ -42,16 +44,15 @@ namespace VideoGallery.WebAPI.Controllers
         /// <param name="filmName">Название фильма или его часть</param>
         /// <returns></returns>
         [System.Web.Http.HttpGet]
-        public async Task<JsonResult> GetVideoGalleryByName (string filmName = "GodFather")
+        public async Task<JsonResult> GetVideoGalleryByFullNameAsync (string filmName = "GodFather")
         {
+            if (string.IsNullOrEmpty(filmName))
+            {
+                throw new ArgumentNullException();
+            }
+            return  new JsonResult()
+                        { Data = await _searchServer.GetListOfFilmsByFilmNameSearchQuery(filmName) };
 
-            IQueryModel QueryToThirdPartyServer = _platform.CreateQueryResponseByFilmName(filmName);
-            string FullUrl = QueryToThirdPartyServer.FullQueryString;
-
-            string Response = await DoRequestToThirdPartyServer.GetResponseByFullQueryStringAsync(FullUrl);
-            JsonResult jsonResult = new JsonResult();
-            jsonResult.Data = Response;
-            return jsonResult;
         }
     }
 }

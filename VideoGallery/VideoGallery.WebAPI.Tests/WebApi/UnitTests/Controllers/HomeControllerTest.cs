@@ -3,7 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using VideoGallery.WebAPI;
 using VideoGallery.WebAPI.Controllers;
 
-namespace VideoGallery.WebAPI.Tests.Controllers
+namespace VideoGallery.Tests.WebApi.UnitTests.Controllers
 {
     [TestClass]
     public class HomeControllerTest

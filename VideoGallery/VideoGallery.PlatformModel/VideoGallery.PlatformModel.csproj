@@ -44,7 +44,7 @@
     <Compile Include="Abstract\IFilmModel.cs" />
     <Compile Include="Abstract\IPlatform.cs" />
     <Compile Include="Abstract\IQueryModel.cs" />
-    <Compile Include="Abstract\IQuerySearchFilmBuilder.cs" />
+    <Compile Include="Abstract\IBuilder_FilmSearchQuery.cs" />
     <Compile Include="Abstract\Strategy_SearchAbstract.cs" />
     <Compile Include="FilmModelConcrete\IMDB_FilmModel.cs" />
     <Compile Include="PlatformConcrete\IMDB_Platform.cs" />

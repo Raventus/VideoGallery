@@ -7,9 +7,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VideoGallery.PlatformModel"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VideoGallery.WebAPI", "VideoGallery.WebAPI\VideoGallery.WebAPI.csproj", "{344E2C75-4653-4680-925F-0227056E1B17}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VideoGallery.WebApi.Tests", "VideoGallery.WebAPI.Tests\VideoGallery.WebApi.Tests.csproj", "{0110EE58-66E4-49DB-9383-12BF6ECACB97}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VideoGallery.Tests", "VideoGallery.WebAPI.Tests\VideoGallery.Tests.csproj", "{0110EE58-66E4-49DB-9383-12BF6ECACB97}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VideoGallery.Common", "VideoGallery.Common\VideoGallery.Common.csproj", "{3DBA50F1-D2F3-46B3-873F-17D651DC8634}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VideoGallery.RequestToFilmServerModel", "VideoGallery.Common\VideoGallery.RequestToFilmServerModel.csproj", "{3DBA50F1-D2F3-46B3-873F-17D651DC8634}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

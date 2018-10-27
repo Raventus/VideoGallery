@@ -9,7 +9,7 @@ namespace VideoGallery.PlatformModel.Abstract
     /// <summary>
     /// Интерфейс для плафтормы, по которой осуществляется поиск
     /// </summary>
-    public interface IPlatform
+    public interface IFilmPlatform
     {
         IQueryModel CreateQueryResponseByFilmName(string FilmName);
     }

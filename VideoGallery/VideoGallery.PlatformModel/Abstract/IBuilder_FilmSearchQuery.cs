@@ -9,7 +9,7 @@ namespace VideoGallery.PlatformModel.Abstract
     /// <summary>
     /// Интерфейс строителя строки запроса 
     /// </summary>
-    public interface IBuilder_QuerySearchFilm 
+    public interface IBuilder_FilmSearchQuery
     {
         void ClearQueryObject();
         void BuildNameOfFilm(string nameOfFilm);

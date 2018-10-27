@@ -5,20 +5,22 @@ using System.Linq;
 using System.Net;
 using System.Text;
 using System.Threading.Tasks;
+using VideoGallery.Common.Abstract;
 
 namespace VideoGallery.Common.WebCommon
 {
     /// <summary>
-    /// Вспомогательный класс для отправки запросов на сторонний сервер
+    /// Вспомогательный класс для стратегии отправки запросов на сторонний сервер
     /// </summary>
-    public static class DoRequestToThirdPartyServer
+    public  class RequestToFilmServerStrategy : IRequestToFilmDataServerStrategy
     {
+
         /// <summary>
         ///  Отправка запроса, используя строку запроса (полностью заполненную клиентом)
         /// </summary>
         /// <param name="requestString">строка запроса</param>
         /// <returns>Контент от стороннего сервера</returns>
-        public static async Task <string> GetResponseByFullQueryStringAsync (string requestString)
+        public  async Task <string> GetResponseByFullQueryStringAsync(string requestString)
         {
             var request = (HttpWebRequest)WebRequest.Create(requestString);
 
