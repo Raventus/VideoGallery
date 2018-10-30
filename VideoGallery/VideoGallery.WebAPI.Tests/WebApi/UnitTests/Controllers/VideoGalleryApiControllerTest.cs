@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using System.Web.Helpers;
+using System.Web.Http;
 using System.Web.Http.Results;
 using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -25,14 +26,14 @@ namespace VideoGallery.WebAPI.Tests.WebApi.UnitTests.Controllers
         }
 
         [TestMethod]
-        public  void Check_GetVideoGalleryByName_Returns_Json()
+        public void Check_GetVideoGalleryByName_Returns_Json()
         {
 
             // Arrange
             VideoGalleryApiController apiController = new VideoGalleryApiController(mockFilmServer.Object);
-            
+
             //// Act
-            var Result =  apiController.GetVideoGalleryByFullNameAsync(QueryString);
+            var Result = apiController.GetVideoGalleryByFullNameAsync(QueryString);
 
             //Assert
             Assert.IsInstanceOfType(Result, typeof(Task<JsonResult>));
@@ -40,18 +41,21 @@ namespace VideoGallery.WebAPI.Tests.WebApi.UnitTests.Controllers
 
         [TestMethod]
         [ExpectedException(typeof(ArgumentNullException))]
-        public  void Check_GetVideoGalleryByName_ThrowArgumentNullException_ForEmptyParametr()
+        public async void Check_GetVideoGalleryByName_ThrowArgumentNullException_ForEmptyParametr()
         {
             // Arrange           
             VideoGalleryApiController apiController = new VideoGalleryApiController(mockFilmServer.Object);
 
-            //// Act
+            //// Act  
+            var output = Task.Run(() => apiController.GetVideoGalleryByFullNameAsync(null));
             try
             {
-                Task<JsonResult> output = apiController.GetVideoGalleryByFullNameAsync(null);
-                Assert.Fail("An ArgumentNullException exception should have been thrown");
+               
+                await output;
             }
-            // Assert: expect ArgumentNullException
+            // Assert.Fail("An ArgumentNullException exception should have been thrown");
+            //}
+            //// Assert: expect ArgumentNullException
             catch (ArgumentNullException ex)
             {
                 Assert.AreEqual("Parameter cannot be null or empty.", ex.Message);
@@ -63,13 +67,6 @@ namespace VideoGallery.WebAPI.Tests.WebApi.UnitTests.Controllers
                                     e.GetType(), e.Message)
                 );
             }
-
-           
-
         }
-
-
-
-       
     }
 }

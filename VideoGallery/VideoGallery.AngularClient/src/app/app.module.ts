@@ -7,11 +7,15 @@ import { AppComponent } from './app.component';
 import {ROUTES} from './app.routes';
 import { GreetingsComponent } from './Greetings/Greetings.component';
 import { SearchFilmsComponent } from './SearchFilms/SearchFilms.component';
+import { MenuComponent } from "./Menu/Menu.component";
 
 
 @NgModule({
   declarations: [
-    AppComponent, GreetingsComponent, SearchFilmsComponent
+    AppComponent
+    , GreetingsComponent
+    , SearchFilmsComponent
+    , MenuComponent
   ],
   imports: [
     BrowserModule,

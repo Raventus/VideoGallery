@@ -48,7 +48,9 @@ namespace VideoGallery.WebAPI.Controllers
         {
             if (string.IsNullOrEmpty(filmName))
             {
-                throw new ArgumentNullException();
+
+                throw new ArgumentNullException();//(Request.CreateErrorResponse(HttpStatusCode.BadRequest, "The parametr can't be null or empty"));
+              //  throw new ArgumentNullException();
             }
             return  new JsonResult()
                         { Data = await _searchServer.GetListOfFilmsByFilmNameSearchQuery(filmName) };

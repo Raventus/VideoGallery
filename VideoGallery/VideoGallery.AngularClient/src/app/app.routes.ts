@@ -3,6 +3,9 @@ import {GreetingsComponent} from './Greetings/Greetings.component';
 import {SearchFilmsComponent} from './SearchFilms/SearchFilms.component'
 
 export const ROUTES: Routes = [
+    { 
+        path: '', component: GreetingsComponent
+    },
     {
         path: "greetings", component: GreetingsComponent
     },
