@@ -1,0 +1,14 @@
+ul {
+    display: flex;
+  }
+
+  ul li {
+    text-align: center;
+    margin: 20px;
+
+  }
+
+  ul li a {
+    padding: 20px;
+    display: block;
+  }
