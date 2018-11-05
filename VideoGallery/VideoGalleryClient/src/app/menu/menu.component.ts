@@ -20,13 +20,14 @@ class MenuItem {
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
-  isclick : boolean;
   constructor() { }
   ngOnInit() {
   };
   changeActive(item: MenuItem)
   {
-    item.isActive = !item.isActive;
+    this.MenuItemsArr.forEach(element => {
+      element.isActive = (element.name == item.name) ? true: false;
+    });
   }
 
   public MenuItemsArr  = [
