@@ -33,7 +33,7 @@ export class MenuComponent implements OnInit {
   public MenuItemsArr  = [
     new MenuItem ("Home", "/greetings", true),
     new MenuItem ("FilmSearch", "/searchFilms", false),
-    new MenuItem ("Contacts", "/contacts", false),
+    new MenuItem ("Contacts", "/contacts", false)
   ];
 }
 

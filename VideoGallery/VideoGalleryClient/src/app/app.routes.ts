@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import {GreetingsComponent} from './greetings/greetings.component';
 import {SearchFilmComponent} from './search-film/search-film.component';
+import {ContactsComponent} from './contacts/contacts.component';
 
 export const ROUTES: Routes = [
     { 
@@ -11,8 +12,11 @@ export const ROUTES: Routes = [
     },
     {
         path: "searchFilms", component: SearchFilmComponent,
-
     },
+    {
+        path: "contacts", component: ContactsComponent,
+    },
+
     { path: "**", redirectTo: "/greetings" }
 
 
