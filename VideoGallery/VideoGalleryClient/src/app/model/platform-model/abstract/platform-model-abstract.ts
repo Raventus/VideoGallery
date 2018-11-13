@@ -1,5 +1,6 @@
 
 import { Injectable } from '@angular/core';
+import {SearhModelAbstractService} from '../../search-model/abstract/searh-model-abstract.service';
 
 
 export class ParameterItem {
@@ -11,6 +12,8 @@ export class ParameterItem {
 
 @Injectable()
 export abstract class  PlatformModelAbstract {
+
     public abstract ListOfParametersToSearch: ParameterItem [];
     public nameOfPlatform : string;
+    public abstract GetSearchModel () :SearhModelAbstractService;
 }

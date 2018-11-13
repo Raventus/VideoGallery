@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from "@angular/router";
+import {PlatformModelAbstract, ParameterItem} from '../model/platform-model/abstract/platform-model-abstract';
+import {SearhModelAbstractService} from '../model/search-model/abstract/searh-model-abstract.service';
+import {HttpRequestServer} from '../model/http-request-model';
+import { NgForm } from "@angular/forms";
 
 @Component({
   selector: 'app-search-film',
@@ -7,9 +12,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SearchFilmComponent implements OnInit {
 
-  constructor() { }
+  public errorMessage: string;
 
-  ngOnInit() {
+  constructor(private router: Router, private _platform :PlatformModelAbstract, private httpRequest: HttpRequestServer) { }
+
+  getPlatform (): PlatformModelAbstract {
+    return this._platform;
   }
+
+  getSearchModel(): SearhModelAbstractService {
+    return this._platform.GetSearchModel();
+  }
+  DoSearch(form: NgForm)
+  {
+    if (form.valid) {
+      this.httpRequest.Get();
+      this.router.navigateByUrl("viewFilms");
+    }
+    else {
+      this.errorMessage = "Form Data Invalid";
+    }
+  }
+  
+  ngOnInit() {
+    console.log("Init search film component");
+  }
+ 
 
 }

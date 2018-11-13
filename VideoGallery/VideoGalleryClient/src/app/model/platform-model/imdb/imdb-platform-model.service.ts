@@ -1,5 +1,6 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 import {PlatformModelAbstract, ParameterItem} from '../abstract/platform-model-abstract';
+import {SearhModelAbstractService} from '../../search-model/abstract/searh-model-abstract.service';
 import { from } from 'rxjs';
 
 @Injectable({
@@ -12,6 +13,10 @@ export class ImdbPlatformModelService implements PlatformModelAbstract {
     new ParameterItem ("Year of film creation")
   ];
 
-  constructor() { 
+  constructor(private searchModel:SearhModelAbstractService) { 
+  }
+
+  GetSearchModel () :SearhModelAbstractService {
+    return this.searchModel;
   }
 }
