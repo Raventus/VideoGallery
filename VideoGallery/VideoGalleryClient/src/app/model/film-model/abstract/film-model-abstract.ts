@@ -1,6 +1,7 @@
 
-export abstract class FilmModelAbstract {
-  nameOfFilm: string;
-  yearOfCreation: number;
+export  class FilmModelAbstract {
+  Title: string;
+  Year: string;
+  Poster: string;
 
 }

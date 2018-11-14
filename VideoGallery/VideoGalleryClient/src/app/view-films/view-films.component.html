@@ -1,5 +1,13 @@
-<ul >
-  <li *ngFor="let item of FilmCollection" class="nav-item col-lg-4" >
-      {{item.parameterName}}
-  </li>
-</ul>
+<div  class="d-flex flex-wrap">
+  <div *ngFor="let item of FilmCollection" class="nav-item col-lg-4" >
+    <div class="card">
+    <div class="imageDiv">
+      <img [src]="item.Poster">
+    </div>
+    <div>
+      <div><a [href]="item.imdbID">{{item.Title}} - {{item.Year}}</a></div>
+    </div>
+  </div>
+      
+</div>
+</div>

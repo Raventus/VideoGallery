@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { MenuComponent } from './menu/menu.component';
 import {GreetingsComponent} from './greetings/greetings.component';
 import {SearchFilmComponent} from './search-film/search-film.component';
+import {ViewFilmsComponent} from './view-films/view-films.component';
 
 
 import {PlatformModelAbstract} from './model/platform-model/abstract/platform-model-abstract';
@@ -21,7 +22,9 @@ import {HttpRequestServer, REQUEST_URL} from './model/http-request-model';
 
 import {ROUTES} from './app.routes';
 import { ContactsComponent } from './contacts/contacts.component';
-import { ViewFilmsComponent } from './view-films/view-films.component';
+
+
+const SERVER_PORT = 4100;
 
 
 @NgModule({
@@ -31,7 +34,7 @@ import { ViewFilmsComponent } from './view-films/view-films.component';
     GreetingsComponent,
     SearchFilmComponent,
     ContactsComponent,
-    ViewFilmsComponent,
+    ViewFilmsComponent
     
   ],
   imports: [
@@ -44,7 +47,7 @@ import { ViewFilmsComponent } from './view-films/view-films.component';
     , {provide: SearhModelAbstractService, useClass: ImdbSearchModelService}
     , AuthorModelService
     , HttpRequestServer
-    ,{provide: REQUEST_URL, useValue: `http://${location.hostname}:3500/api`}
+    ,{provide: REQUEST_URL, useValue: `http://${location.hostname}:${SERVER_PORT}/api/VideoGalleryApi/`}
   ],
   bootstrap: [AppComponent]
 })

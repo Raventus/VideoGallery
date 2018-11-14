@@ -26,7 +26,7 @@ export class SearchFilmComponent implements OnInit {
   DoSearch(form: NgForm)
   {
     if (form.valid) {
-      this.httpRequest.Get();
+      console.log(this._platform.GetSearchModel().filmName);
       this.router.navigateByUrl("viewFilms");
     }
     else {

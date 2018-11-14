@@ -44,14 +44,8 @@ namespace VideoGallery.WebAPI.Controllers
         /// <param name="filmName">Название фильма или его часть</param>
         /// <returns></returns>
         [System.Web.Http.HttpGet]
-        public async Task<JsonResult> GetVideoGalleryByFullNameAsync (string filmName = "GodFather")
+        public async Task<JsonResult> GetVideoGalleryByFullNameAsync (string filmName = "Fast and Furious")
         {
-            if (string.IsNullOrEmpty(filmName))
-            {
-
-                throw new ArgumentNullException();//(Request.CreateErrorResponse(HttpStatusCode.BadRequest, "The parametr can't be null or empty"));
-              //  throw new ArgumentNullException();
-            }
             return  new JsonResult()
                         { Data = await _searchServer.GetListOfFilmsByFilmNameSearchQuery(filmName) };
 

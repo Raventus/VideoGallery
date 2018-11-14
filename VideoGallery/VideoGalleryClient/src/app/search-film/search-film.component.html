@@ -9,7 +9,7 @@
 <form #form="ngForm" novalidate (ngSubmit) = "DoSearch(form)">
   <div class="form-group">
     <label>Name of film: </label>
-    <input class="form-control" [(ngModel)] ="getSearchModel().NameOfFilm" 
+    <input class="form-control" [(ngModel)] ="getSearchModel().filmName" 
         name="name" minlength="4" required/>
   </div>
   <div class="form-group">

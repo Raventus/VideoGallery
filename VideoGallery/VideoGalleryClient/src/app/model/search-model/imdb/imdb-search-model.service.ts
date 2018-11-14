@@ -5,7 +5,7 @@ import {SearhModelAbstractService} from '../abstract/searh-model-abstract.servic
   providedIn: 'root'
 })
 export class ImdbSearchModelService implements SearhModelAbstractService {
-  nameOfFilm: string = 'Godfather';
-  yearOfCreation: number = 1973;
+  filmName: string ="Fast and Furious" ;
+  yearOfCreation: string;
   constructor() { }
 }
