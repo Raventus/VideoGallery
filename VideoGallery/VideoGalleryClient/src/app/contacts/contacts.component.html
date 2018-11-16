@@ -1,14 +1,17 @@
-<h1>This page has contact information about the author of this application </h1>
-<p>Hello users, my name is {{getAuthorName()}} </p>
-<div *ngIf ="checkValidContactInformation();else NoValidContactInformation">
-  <div>Телефон: {{getPhoneNumber()}}</div>
-  <div>Email: {{getEmail()}}</div>
-</div> 
-<ng-template #NoValidContactInformation>
-  <div class="ErrorMessage">
-    The contact information of author is invalid
+<div class="leftmargin">
+  <h1>Сontact information </h1>
+  <p>Hello, my name is {{getAuthorName()}} </p>
+  <div *ngIf="checkValidContactInformation();else NoValidContactInformation">
+    <div>Телефон: {{getPhoneNumber()}}</div>
+    <div>
+      <a href="mailto:{{getEmail()}}">Email: {{getEmail()}}</a> 
+    </div>
   </div>
-</ng-template>  
-
+  <ng-template #NoValidContactInformation>
+    <div class="ErrorMessage">
+      The contact information of author is invalid
+    </div>
+  </ng-template>
+</div>
 
 

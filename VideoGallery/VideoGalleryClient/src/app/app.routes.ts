@@ -20,7 +20,6 @@ export const ROUTES: Routes = [
     {
         path: "viewFilms", component: ViewFilmsComponent,
     },
-
     { path: "**", redirectTo: "/greetings" }
 
 

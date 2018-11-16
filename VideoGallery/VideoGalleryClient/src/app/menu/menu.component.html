@@ -5,21 +5,23 @@
     </a>
 
     <!--Toogler-->
-    <button type="button" class="navbar-toggler" data-target="#navBarMenuContent" data-toggle="collapse"
-        aria-controls="navBarMenuContent" aria-expanded="false" aria-label="Toogle">
-        <span class="navbar-toggler-icon"></span> 
+    <button type="button" class="navbar-toggler" data-target="#navBarMenuContent" data-toggle="collapse" aria-controls="navBarMenuContent"
+        aria-expanded="false" aria-label="Toogle">
+        <span class="navbar-toggler-icon"></span>
     </button>
 
     <!--Menu-->
-    <div class="navbar-collapse collapse btn-group" id="navBarMenuContent">
-            <ul class="navbar-nav  mr-auto" >
-                <li *ngFor="let item of MenuItemsArr" class="nav-item col-lg-4" >
-                        <a class="nav-link btn btn-primary text-dark" role="button" routerLink={{item.routerNavigator}} 
-                        [ngClass]="{'btn-success': item.isActive , 'btn-primary': !item.isActive }" 
-                        (click)=changeActive(item)>
-                                {{item.name}}
-                    </a>
-                </li>
-                </ul>
-  </div>
+    <div class="navbar-collapse collapse btn-group container-fluid" id="navBarMenuContent">
+        <!--<ul class="navbar-nav  mr-auto"> --->
+            <button *ngFor="let item of MenuItemsArr" class="nav-item col-lg-4 btn-lg" routerLink={{item.routerNavigator}}
+            [ngClass]="{'btn-success': item.isActive , 'btn-secondary': !item.isActive }" (click)=changeActive(item)>{{item.name}}</button>
+           
+            <!-- <li *ngFor="let item of MenuItemsArr" class="nav-item col-lg-4">
+                <a class="nav-link btn btn-primary btn-block text-dark" role="button" routerLink={{item.routerNavigator}}
+                    [ngClass]="{'btn-success': item.isActive , 'btn-primary': !item.isActive }" (click)=changeActive(item)>
+                    {{item.name}}
+                </a>
+            </li>
+        </ul>--->
+    </div>
 </nav>

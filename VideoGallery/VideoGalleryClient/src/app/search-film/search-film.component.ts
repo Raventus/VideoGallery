@@ -8,7 +8,7 @@ import { NgForm } from "@angular/forms";
 @Component({
   selector: 'app-search-film',
   templateUrl: './search-film.component.html',
-  styleUrls: ['./search-film.component.css']
+  styleUrls: ['./search-film.component.css', '../app.component.css']
 })
 export class SearchFilmComponent implements OnInit {
 

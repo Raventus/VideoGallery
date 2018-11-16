@@ -1,12 +1,14 @@
 <h1>Welcome to Video Gallery application</h1>
-<p class="greetingsText">
-  The current search platform is {{getNameOfPlatform()}}
-</p> 
-<p class="greetingsText">
-  You can search by keyworld or fill in the specific parameters of {{getNameOfPlatform()}}
-</p>
-<ul >
-  <li *ngFor="let item of getListOfPlatformParameters()" class="nav-item col-lg-4" >
+<div class="container">
+  <p class="greetingsText paddingFromLeft">
+    The current search platform is {{getNameOfPlatform()}}
+  </p>
+  <p class="greetingsText paddingFromLeft">
+    You can search by key word or fill in the specific parameters of {{getNameOfPlatform()}}
+  </p>
+  <ul>
+    <li *ngFor="let item of getListOfPlatformParameters()" class="nav-item col-lg-4 paddingFromLeft">
       {{item.parameterName}}
-  </li>
-</ul>
+    </li>
+  </ul>
+</div>

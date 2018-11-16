@@ -3,3 +3,7 @@
     font-weight: bold;
     font-style: italic;
 }
+
+div.leftmargin {
+    margin-left: 3em;
+}

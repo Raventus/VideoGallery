@@ -6,7 +6,7 @@ import {PlatformModelAbstract, ParameterItem} from '../model/platform-model/abst
 @Component({
   selector: 'app-greetings',
   templateUrl: './greetings.component.html',
-  styleUrls: ['./greetings.component.css'],
+  styleUrls: ['./greetings.component.css', '../app.component.css'],
 
 })
 export class GreetingsComponent implements OnInit {

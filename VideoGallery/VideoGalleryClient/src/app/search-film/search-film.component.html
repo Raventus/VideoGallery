@@ -1,27 +1,29 @@
 <h1>Search page</h1>
-<p>
-  The current platform to search:  {{getPlatform().nameOfPlatform}}
-</p>
-<div class="bg-danger m-t-1 p-a-1 text-xs-center" 
-            *ngIf="errorMessage != null">
+
+<div class="container">
+    <p class="paddingFromLeft">
+        The current platform to search: {{getPlatform().nameOfPlatform}}
+      </p>
+      <div class="bg-danger m-t-1 p-a-1 text-xs-center" *ngIf="errorMessage != null">
         {{errorMessage}}
+      </div>
+  <form #form="ngForm" novalidate (ngSubmit)="DoSearch(form)">
+    <div class="form-group  col-lg-4 col-lg-offset-4">
+      <label>Name of film: </label>
+      <input class="form-control formElement" [(ngModel)]="getSearchModel().filmName" name="name" minlength="4"
+        required />
     </div>
-<form #form="ngForm" novalidate (ngSubmit) = "DoSearch(form)">
-  <div class="form-group">
-    <label>Name of film: </label>
-    <input class="form-control" [(ngModel)] ="getSearchModel().filmName" 
-        name="name" minlength="4" required/>
-  </div>
-  <div class="form-group">
-    <label>YearOfCreation: </label>
-    <input class="form-control" pattern="^[0-9]+$" minlength="4"  [(ngModel)] ="getSearchModel().YearOfCreation" name="year"/>
-  </div>
-  <div class="form-group text-xs-center">
-    <button class="btn btn-primary" type="submit">
-      Search
-    </button>
-    <button class="btn btn-secondary" type="reset">
-      Clear form
-    </button>
-  </div>
-</form>
+    <div class="form-group col-lg-4 col-lg-offset-4 ">
+      <label>YearOfCreation: </label>
+      <input class="form-control" pattern="^[0-9]+$" minlength="4" [(ngModel)]="getSearchModel().YearOfCreation" name="year" />
+    </div>
+    <div class="btn-group col-lg-4 col-lg-offset-4">
+      <button class="btn btn-primary " type="submit">
+        Search
+      </button>
+      <button class="btn btn-secondary " type="reset">
+        Clear form
+      </button>
+    </div>
+  </form>
+</div>

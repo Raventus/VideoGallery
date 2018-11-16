@@ -15,5 +15,6 @@ export abstract class  PlatformModelAbstract {
 
     public abstract ListOfParametersToSearch: ParameterItem [];
     public nameOfPlatform : string;
+    public hostURL: string;
     public abstract GetSearchModel () :SearhModelAbstractService;
 }

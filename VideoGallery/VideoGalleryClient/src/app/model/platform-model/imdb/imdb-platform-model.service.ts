@@ -19,4 +19,6 @@ export class ImdbPlatformModelService implements PlatformModelAbstract {
   GetSearchModel () :SearhModelAbstractService {
     return this.searchModel;
   }
+
+  hostURL: string = "https://www.imdb.com/title/";
 }

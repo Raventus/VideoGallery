@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { HttpClientModule} from "@angular/common/http";
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import {RouterModule} from "@angular/router"
@@ -38,9 +39,10 @@ const SERVER_PORT = 4100;
     
   ],
   imports: [
+    HttpClientModule, 
     BrowserModule,
     FormsModule, 
-    HttpModule, RouterModule.forRoot(ROUTES)
+     RouterModule.forRoot(ROUTES)
   ],
   providers: [
     {provide: PlatformModelAbstract, useClass: ImdbPlatformModelService }
