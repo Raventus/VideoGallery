@@ -7,7 +7,7 @@ using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using Newtonsoft.Json;
-using VideoGallery.Common.Abstract;
+using VideoGallery.Abstract;
 using VideoGallery.WebAPI.Controllers;
 
 namespace VideoGallery.WebAPI.Tests.WebApi.UnitTests.Controllers
@@ -18,15 +18,21 @@ namespace VideoGallery.WebAPI.Tests.WebApi.UnitTests.Controllers
         Mock<IFilmSearchServer> mockFilmServer = new Mock<IFilmSearchServer>();
         string QueryString = "Godfather";
 
-        [TestInitialize()]
-        public void Startup()
-        {
-            mockFilmServer.Setup(m => m.GetListOfFilmsByFilmNameSearchQuery(It.IsAny<string>()))
-             .Returns((string x) => Task.FromResult(x));
-        }
+
+        /// <summary>
+        /// Метод инициализаци тестовых данных
+        /// </summary>
+        //[TestInitialize()]
+        //public void Startup()
+        //{
+        //    mockFilmServer.Setup(m => m.GetListOfFilmsByFilmNameSearchQuery(It.IsAny<string>()))
+        //     .Returns((string x) => Task.FromResult(x));
+        //}
+
+
 
         [TestMethod]
-        public void Check_GetVideoGalleryByName_Returns_Json()
+        public void GetVideoGalleryByFullNameAsync_ReturnsJson()
         {
 
             // Arrange
@@ -39,34 +45,34 @@ namespace VideoGallery.WebAPI.Tests.WebApi.UnitTests.Controllers
             Assert.IsInstanceOfType(Result, typeof(Task<JsonResult>));
         }
 
-        [TestMethod]
-        [ExpectedException(typeof(ArgumentNullException))]
-        public async void Check_GetVideoGalleryByName_ThrowArgumentNullException_ForEmptyParametr()
-        {
-            // Arrange           
-            VideoGalleryApiController apiController = new VideoGalleryApiController(mockFilmServer.Object);
+        //[TestMethod]
+        //[ExpectedException(typeof(ArgumentNullException))]
+        //public async void Check_GetVideoGalleryByName_ThrowArgumentNullException_ForEmptyParametr()
+        //{
+        //    // Arrange           
+        //    VideoGalleryApiController apiController = new VideoGalleryApiController(mockFilmServer.Object);
 
-            //// Act  
-            var output = Task.Run(() => apiController.GetVideoGalleryByFullNameAsync(null));
-            try
-            {
+        //    //// Act  
+        //    var output = Task.Run(() => apiController.GetVideoGalleryByFullNameAsync(null));
+        //    try
+        //    {
                
-                await output;
-            }
-            // Assert.Fail("An ArgumentNullException exception should have been thrown");
-            //}
-            //// Assert: expect ArgumentNullException
-            catch (ArgumentNullException ex)
-            {
-                Assert.AreEqual("Parameter cannot be null or empty.", ex.Message);
-            }
-            catch (Exception e)
-            {
-                Assert.Fail(
-                     string.Format("Unexpected exception of type {0} caught: {1}",
-                                    e.GetType(), e.Message)
-                );
-            }
-        }
+        //        await output;
+        //    }
+        //    // Assert.Fail("An ArgumentNullException exception should have been thrown");
+        //    //}
+        //    //// Assert: expect ArgumentNullException
+        //    catch (ArgumentNullException ex)
+        //    {
+        //        Assert.AreEqual("Parameter cannot be null or empty.", ex.Message);
+        //    }
+        //    catch (Exception e)
+        //    {
+        //        Assert.Fail(
+        //             string.Format("Unexpected exception of type {0} caught: {1}",
+        //                            e.GetType(), e.Message)
+        //        );
+        //    }
+        //}
     }
 }

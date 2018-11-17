@@ -3,18 +3,18 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using VideoGallery.PlatformModel.Abstract;
 using VideoGallery.PlatformModel.QueryBuilderConcrete;
 
-namespace VideoGallery.WebAPI.Tests.PlatformModel.UnitTests
+namespace VideoGallery.WebAPI.Tests.PlatformModel.QueryBuilderConcrete
 {
     [TestClass]
-    public class CheckIMDB_Builder
+    public class Builder_QuerySearch_IMDB_With_OpenDataBaseApiTests
     {
         [TestMethod]
-        public void Check_Builder_With_WithOpenDataBaseApiQUeryModel_Return_CorrectURl()
+        public void BuildNameOfFilm_WithGodfatherParameters_ReturnCorrectURl()
         {
             // Arrange
             string NameOfFilmToSearch = "Godfather";
             string outputCheckString = @"http://www.omdbapi.com:80/?s=" + NameOfFilmToSearch  + @"&apikey=dc74c032";
-            IBuilder_FilmSearchQuery builder = new Builder_QuerySearch_IMDB_With_OpenDataBaseApi();
+            IBuilder_FilmSearchQuery builder = new BuilderQuerySearchIMDBWithOpenDataBaseApi();
 
             // Act
             builder.BuildNameOfFilm(NameOfFilmToSearch);

@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using VideoGallery.Common.Abstract;
-using VideoGallery.Common.WebCommon;
+using VideoGallery.Abstract;
 using VideoGallery.PlatformModel.Abstract;
 
-namespace VideoGallery.Common.VideoSearchServers
+namespace VideoGallery.VideoSearchServers
 {
    /// <summary>
    /// Класс для получения данных о фильмах, с использованием платформ IMDB

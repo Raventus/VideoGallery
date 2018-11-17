@@ -12,13 +12,13 @@ namespace VideoGallery.WebAPI.App_Start
     using Ninject.Web.Common;
     using Ninject.Web.Common.WebHost;
     using Ninject.Web.Mvc;
-    using VideoGallery.Common.Abstract;
-    using VideoGallery.Common.VideoSearchServers;
-    using VideoGallery.Common.WebCommon;
+    using VideoGallery.Abstract;
+    using VideoGallery.VideoSearchServers;
     using VideoGallery.PlatformModel.Abstract;
     using VideoGallery.PlatformModel.PlatformConcrete;
     using VideoGallery.PlatformModel.QueryBuilderConcrete;
     using VideoGallery.PlatformModel.SearchStrategyConcrete;
+    using VideoGallery.RequestToFilmServerModel.RequestFilmServerStrategy;
 
     public static class NinjectWebCommon 
     {
@@ -72,13 +72,12 @@ namespace VideoGallery.WebAPI.App_Start
         {
 
             System.Web.Mvc.DependencyResolver.SetResolver(new NinjectDependencyResolver(kernel));
+            kernel.Bind<IBuilder_FilmSearchQuery>().To<BuilderQuerySearchIMDBWithOpenDataBaseApi>();
+            kernel.Bind<Strategy_SearchAbstract>().To<Strategy_IMDB_Search_With_OpenDataBaseApi>();
+            kernel.Bind<IRequestToFilmDataServerStrategy>().To<RequestToFilmServerStrategy>();
+            kernel.Bind<IFilmPlatform>().To<IMDB_Platform>();
 
-
-            kernel.Bind<IFilmSearchServer>().To<FilmSearchServer_for_IMDB_Platform>()
-                    .WithConstructorArgument("filmPlatform"
-                               , new IMDB_Platform(new Strategy_IMDB_Search_With_OpenDataBaseApi(new Builder_QuerySearch_IMDB_With_OpenDataBaseApi())))
-                    .WithConstructorArgument("requestToFilmServerStrategy"
-                               , new RequestToFilmServerStrategy());
+            kernel.Bind<IFilmSearchServer>().To<FilmSearchServer_for_IMDB_Platform>();
        
         }        
     }

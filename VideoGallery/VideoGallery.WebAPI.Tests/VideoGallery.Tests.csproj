@@ -110,9 +110,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PlatformModel\UnitTests\CheckIMDB_Builder.cs" />
+    <Compile Include="PlatformModel\QueryBuilderConcrete\BuilderQuerySearchIMDBWithOpenDataBaseApiTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RequestToFilmServerModel\IntegrationTests\CheckIntegrationForIMDB_Environment.cs" />
+    <Compile Include="RequestToFilmServerModel\VideoSearchServers\FilmSearchServerForIMDBPlatformTests.cs" />
     <Compile Include="WebApi\UnitTests\Controllers\HomeControllerTest.cs" />
     <Compile Include="WebApi\UnitTests\Controllers\VideoGalleryApiControllerTest.cs" />
   </ItemGroup>
@@ -137,6 +137,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="RequestToFilmServerModel\IntegrationTests\" />
     <Folder Include="RequestToFilmServerModel\UnitTests\" />
     <Folder Include="WebApi\IntegrationTests\" />
   </ItemGroup>

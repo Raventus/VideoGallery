@@ -2,7 +2,7 @@
 import { Injectable } from '@angular/core';
 import {SearhModelAbstractService} from '../../search-model/abstract/searh-model-abstract.service';
 
-
+// текстовое представление параметра для поиска
 export class ParameterItem {
     parameterName : string;
     constructor (name: string) {
@@ -10,11 +10,16 @@ export class ParameterItem {
     }
   }
 
+  // абстрактный сервис для предоставления платформы поиска
 @Injectable()
 export abstract class  PlatformModelAbstract {
 
+    // список параметров для поиска (текстовый)
     public abstract ListOfParametersToSearch: ParameterItem [];
-    public nameOfPlatform : string;
-    public hostURL: string;
+    // имя платформы
+    public abstract nameOfPlatform : string;
+    // абстрактный метод для предоставления службы поиска фильмов
     public abstract GetSearchModel () :SearhModelAbstractService;
+    public hostURL: string;
+    
 }

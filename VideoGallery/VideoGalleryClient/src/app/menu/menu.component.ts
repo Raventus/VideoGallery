@@ -13,16 +13,19 @@ class MenuItem {
   }
  
 }
-
+// Компонент для навигационного меню приложения
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.css']
 })
 export class MenuComponent implements OnInit {
+
   constructor() { }
+
   ngOnInit() {
   };
+  // функция, меняющая цвет кнопки активной вкладки в меню
   changeActive(item: MenuItem)
   {
     this.MenuItemsArr.forEach(element => {
@@ -30,6 +33,7 @@ export class MenuComponent implements OnInit {
     });
   }
 
+  // массив кнопо меню
   public MenuItemsArr  = [
     new MenuItem ("Home", "/greetings", true),
     new MenuItem ("FilmSearch", "/searchFilms", false),

@@ -12,7 +12,7 @@ namespace VideoGallery.PlatformModel.QueryBuilderConcrete
     /// <summary>
     /// Строитель запроса для платформы IMDB, используя стратегию поиска OpenDataBaseApi 
     /// </summary>
-    public class Builder_QuerySearch_IMDB_With_OpenDataBaseApi : IBuilder_FilmSearchQuery
+    public class BuilderQuerySearchIMDBWithOpenDataBaseApi : IBuilder_FilmSearchQuery
     {
 
         IQueryModel QueryObject = new IMDB_QueryModel_WithOpenDataBaseApi();
@@ -35,7 +35,7 @@ namespace VideoGallery.PlatformModel.QueryBuilderConcrete
         /// <summary>
         /// Конструктор строителя объекта запроса
         /// </summary>
-        public Builder_QuerySearch_IMDB_With_OpenDataBaseApi()
+        public BuilderQuerySearchIMDBWithOpenDataBaseApi()
         {
            
             queryStringOfRequest = System.Web.HttpUtility.ParseQueryString(string.Empty);

@@ -8,8 +8,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Results;
 using System.Web.Mvc;
-using VideoGallery.Common.WebCommon;
-using VideoGallery.Common.Abstract;
+using VideoGallery.Abstract;
 using VideoGallery.PlatformModel.Abstract;
 using VideoGallery.PlatformModel.FilmModelConcrete;
 
