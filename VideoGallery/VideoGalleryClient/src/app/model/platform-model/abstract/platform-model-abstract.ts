@@ -20,6 +20,8 @@ export abstract class  PlatformModelAbstract {
     public abstract nameOfPlatform : string;
     // абстрактный метод для предоставления службы поиска фильмов
     public abstract GetSearchModel () :SearhModelAbstractService;
+
+    // адрес хоста, если ссылка относительная
     public hostURL: string;
     
 }

@@ -4,7 +4,7 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export abstract class SearhModelAbstractService {
-  filmName: string ="Fast and Furious" 
+  filmName: string;
   yearOfCreation: string;
   constructor() { }
 }

@@ -15,19 +15,22 @@ export class SearchFilmComponent implements OnInit {
 
    errorMessage: string;
 
+   // bool is form is try to sumbitting
    formSubmitted: boolean;
 
 
-
+  // _platform - current platform to serach films
   constructor(private router: Router, private _platform :PlatformModelAbstract, private httpRequest: HttpRequestServer) { }
 
+  // return current platform
   getPlatform (): PlatformModelAbstract {
     return this._platform;
   }
-
+  // return search model of current platform
   getSearchModel(): SearhModelAbstractService {
     return this._platform.GetSearchModel();
   }
+  // form submit function 
   DoSearch(form: NgForm)
   {
     this.formSubmitted = true;
@@ -38,11 +41,10 @@ export class SearchFilmComponent implements OnInit {
     }
     else {
      // form.reset;
-      
       this.errorMessage = "Form Data Invalid";
     }
   }
-
+// function to return the mistake string of all form element
   getFormValidationMessages (form: NgForm): string[] {
     let messages : string[] = [];
     Object.keys(form.controls).forEach (item => {
@@ -51,7 +53,7 @@ export class SearchFilmComponent implements OnInit {
       });
       return messages;
     }
-
+    // function to return the mistake string of one form element
   getValidationMessage (state: any, thingName?: string) {
     let thing: string = state.path || thingName;
     let messages: string[] = [];
