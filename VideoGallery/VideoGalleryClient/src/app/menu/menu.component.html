@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top " >
     <!--Brand-->
     <a class="navbar-brand" href="https://sparkequation.com/">
         <img src="https://sparkequation.com/images/logo_white.svg" alt="Spark" height="100" width="100">
@@ -11,10 +11,14 @@
     </button>
 
     <!--Menu-->
-    <div class="navbar-collapse collapse btn-group container-fluid" id="navBarMenuContent">
+    <div class="navbar-collapse collapse" id="navBarMenuContent">
         <!--<ul class="navbar-nav  mr-auto"> --->
-            <button *ngFor="let item of MenuItemsArr" class="nav-item col-lg-4 btn-lg" routerLink={{item.routerNavigator}}
-            [ngClass]="{'btn-success': item.isActive , 'btn-secondary': !item.isActive }" (click)=changeActive(item)>{{item.name}}</button>
+            <button *ngFor="let item of MenuItemsArr" class="nav-item col-lg-4 btn-lg fa" routerLink={{item.routerNavigator}} style="height: 5em"
+            [ngClass]="{'btn-success': item.isActive , 'btn-secondary': !item.isActive }" (click)=changeActive(item)>
+
+            <span [class]=item.fontAwesomeClass ></span> 
+            {{item.name}}
+        </button>
            
             <!-- <li *ngFor="let item of MenuItemsArr" class="nav-item col-lg-4">
                 <a class="nav-link btn btn-primary btn-block text-dark" role="button" routerLink={{item.routerNavigator}}

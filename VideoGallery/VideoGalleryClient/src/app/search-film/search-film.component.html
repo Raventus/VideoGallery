@@ -1,32 +1,31 @@
-<h1>Search page</h1>
-
 <div class="container">
-  <p class="paddingFromLeft">
+
+  <h1>Search page</h1>
+  <p class="textDecoration">
     The current platform to search: {{getPlatform().nameOfPlatform}}
   </p>
-
   <!--Form to search-->
   <form #form="ngForm" novalidate (ngSubmit)="DoSearch(form)">
     <!--div for users mistake-->
-      <div class="bg-warning p-a-1 m-b-1" *ngIf="formSubmitted && form.invalid">
-          <h4>Try to fix this mistakes:</h4>
-          <ul>
-            <li *ngFor="let error of getFormValidationMessages(form)">
-              {{error}}
-            </li>
-          </ul>
-        </div>
-        <!-- div for Query string-->
+    <div class="bg-warning p-a-1 m-b-1 textDecoration" *ngIf="formSubmitted && form.invalid">
+      <h4>Try to fix this mistakes:</h4>
+      <ul>
+        <li *ngFor="let error of getFormValidationMessages(form)">
+          {{error}}
+        </li>
+      </ul>
+    </div>
+    <!-- div for Query string-->
     <div class="form-group col-lg-4 col-lg-offset-4">
-      <label>Name of film: </label>
+      <label class="textDecoration">Name of film: </label>
       <input class="form-control formElement" [(ngModel)]="getSearchModel().filmName" name="name" pattern="^[а-яА-ЯёЁa-zA-Z0-9- ]+$"
-        minlength="4" required />
+        placeholder="Enter name of film" minlength="4" required />
     </div>
     <!-- div for year of the film-->
     <div class="form-group col-lg-4 col-lg-offset-4 ">
-      <label>YearOfCreation: </label>
+      <label class="textDecoration">Year of creation: </label>
       <input class="form-control" pattern="^[12][0-9]{3}$" minlength="4" maxlength="4" [(ngModel)]="getSearchModel().YearOfCreation"
-        name="year" />
+        placeholder="Enter the year" name="year" />
     </div>
     <!--contorl button div-->
     <div class="btn-group col-lg-4 col-lg-offset-4">
@@ -35,8 +34,7 @@
         Search
       </button>
       <button class="btn btn-secondary " type="reset">
-          <i class="fa fa-recycle"></i>
-          
+        <i class="fa fa-recycle"></i>
         Clear form
       </button>
     </div>
