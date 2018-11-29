@@ -1,15 +1,15 @@
 import { Component, OnInit, ApplicationRef } from '@angular/core';
 import { Router } from "@angular/router";
-import {PlatformModelAbstract, ParameterItem} from '../model/platform-model/abstract/platform-model-abstract';
-import {SearhModelAbstractService} from '../model/search-model/abstract/searh-model-abstract.service';
-import {HttpRequestServer} from '../model/http-request-model';
-import { NgForm } from "@angular/forms";
-import { isJsObject } from '@angular/core/src/change_detection/change_detection_util';
+import {PlatformAbstractService, ParameterItem} from '../../services/platform-service/abstract/platform-abstract.service';
+import {SearhModelAbstractService} from '../../model/search-model/abstract/searh-model-abstract.service';
+//import {HttpRequestServer} from '../../model/http-request-model';
+import { NgForm, ReactiveFormsModule  } from "@angular/forms";
+
 
 @Component({
   selector: 'app-search-film',
   templateUrl: './search-film.component.html',
-  styleUrls: ['./search-film.component.css', '../app.component.css']
+  styleUrls: ['./search-film.component.css', '../../app.component.css']
 })
 export class SearchFilmComponent implements OnInit {
 
@@ -20,10 +20,10 @@ export class SearchFilmComponent implements OnInit {
 
 
   // _platform - current platform to serach films
-  constructor(private router: Router, private _platform :PlatformModelAbstract, private httpRequest: HttpRequestServer) { }
+  constructor(private router: Router, public _platform :PlatformAbstractService /*, private httpRequest: HttpRequestServer*/) { }
 
   // return current platform
-  getPlatform (): PlatformModelAbstract {
+  getPlatform (): PlatformAbstractService {
     return this._platform;
   }
   // return search model of current platform
@@ -35,8 +35,12 @@ export class SearchFilmComponent implements OnInit {
   {
     this.formSubmitted = true;
     if (form.valid) {
-      console.log(this._platform.GetSearchModel().filmName);
-      this.router.navigateByUrl("viewFilms");
+      this._platform.doPlatformSearch();
+      console.log (this._platform._resultSearch.isValid);
+      if (this._platform._resultSearch.isValid) {
+        this.router.navigateByUrl("viewFilms");  
+      }
+        
       this.formSubmitted = false;
     }
     else {
@@ -44,6 +48,7 @@ export class SearchFilmComponent implements OnInit {
       this.errorMessage = "Form Data Invalid";
     }
   }
+  /*
 // function to return the mistake string of all form element
   getFormValidationMessages (form: NgForm): string[] {
     let messages : string[] = [];
@@ -74,12 +79,12 @@ export class SearchFilmComponent implements OnInit {
     }
     console.log (messages);
     return messages;
-  }
+  }*/
 
 
 
   ngOnInit() {
-    console.log("Init search film component");
+
   }
  
 

@@ -43,10 +43,10 @@ namespace VideoGallery.WebAPI.Controllers
         /// <param name="filmName">Название фильма или его часть</param>
         /// <returns></returns>
         [System.Web.Http.HttpGet]
-        public async Task<JsonResult> GetVideoGalleryByFullNameAsync (string filmName = "Fast and Furious")
+        public async Task<JsonResult> GetVideoGalleryByFullNameAsync (string filmName = "Fast and Furious", string page = "1")
         {
             return  new JsonResult()
-                        { Data = await _searchServer.GetListOfFilmsByFilmNameSearchQuery(filmName) };
+                        { Data = await _searchServer.GetListOfFilmsByFilmNameSearchQuery(filmName, page) };
 
         }
     }

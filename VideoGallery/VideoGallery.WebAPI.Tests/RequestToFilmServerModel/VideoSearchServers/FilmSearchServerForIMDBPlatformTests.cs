@@ -27,7 +27,7 @@ namespace VideoGallery.WebAPI.Tests.VideoSearchServers
             IFilmSearchServer IMDBPlatform = new FilmSearchServer_for_IMDB_Platform(filmPlatform, RequestToFilmDataServerStrategy);
 
             // Act
-            var OutPutString = IMDBPlatform.GetListOfFilmsByFilmNameSearchQuery(QueryString);
+            var OutPutString = IMDBPlatform.GetListOfFilmsByFilmNameSearchQuery(QueryString, "1");
 
             //Assert
             Assert.IsTrue(OutPutString.Result.Contains("\"Title\":\"The Godfather\",\"Year\":\"1972\""));

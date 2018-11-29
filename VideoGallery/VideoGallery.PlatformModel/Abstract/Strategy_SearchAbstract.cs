@@ -12,8 +12,8 @@ namespace VideoGallery.PlatformModel.Abstract
     public abstract class Strategy_SearchAbstract
     {
 
-        public abstract IQueryModel ConstructQuerySearchByFilmName(string filmname);
-        public abstract IQueryModel ConstructQuerySearchByNameAndYear(string name, string year);
+        public abstract IQueryModel ConstructQuerySearchByFilmName(string filmname, string page);
+        public abstract IQueryModel ConstructQuerySearchByNameAndYear(string name, string year, string page);
 
     }
 }

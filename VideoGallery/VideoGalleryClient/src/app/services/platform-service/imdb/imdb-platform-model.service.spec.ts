@@ -1,15 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { ImdbPlatformModelService } from './imdb-platform-model.service';
+import { ImdbPlatformService } from './imdb-platform-model.service';
 
 describe('ImdbPlatformModelService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [ImdbPlatformModelService]
+      providers: [ImdbPlatformService]
     });
   });
 
-  it('should be created', inject([ImdbPlatformModelService], (service: ImdbPlatformModelService) => {
+  it('should be created', inject([ImdbPlatformService], (service: ImdbPlatformService) => {
     expect(service).toBeTruthy();
   }));
 });

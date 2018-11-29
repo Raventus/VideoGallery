@@ -25,6 +25,7 @@ namespace VideoGallery.PlatformModel.QueryBuilderConcrete
         private const string _filmName = "FilmName";
         private const string _yearOfCreation = "YearOfCreation";
         private const string _keyAuth = "KeyAuthTail";
+        private const string _page = "page";
 
        
         private const string HostName = "http://www.omdbapi.com/";
@@ -51,6 +52,7 @@ namespace VideoGallery.PlatformModel.QueryBuilderConcrete
             {
                 QueryParameterDictionary[_filmName] = "s";
                 QueryParameterDictionary[_yearOfCreation] = "y";
+                QueryParameterDictionary[_page] = "page";
                 QueryParameterDictionary[_keyAuth] = "apikey";
             }
             else
@@ -75,6 +77,7 @@ namespace VideoGallery.PlatformModel.QueryBuilderConcrete
         {
 
             queryStringOfRequest[QueryParameterDictionary[_filmName]] = nameOfFilm;
+  
         }
 
         public void BuildYearOfFoundation(string yearOfFilm)
@@ -89,6 +92,11 @@ namespace VideoGallery.PlatformModel.QueryBuilderConcrete
             FullQueryString.Query = queryStringOfRequest.ToString();
             QueryObject.FullQueryString = FullQueryString.ToString();
             return QueryObject;
+        }
+
+        public void BuildPageNumber(string page)
+        {
+            queryStringOfRequest[QueryParameterDictionary[_page]] = page;
         }
     }
 }

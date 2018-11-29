@@ -24,11 +24,5 @@ export class HttpRequestServer {
 
 
 
-   /* private sendRequest (verb: RequestMethod, url: string, parameters?: HttpParams): Observable<any> {   
-        return this.http.request(new Request ({
-            method: verb,
-            url: url,
-            params: parameters
-        })).map(response=>response.json());
-    }*/
+
 }

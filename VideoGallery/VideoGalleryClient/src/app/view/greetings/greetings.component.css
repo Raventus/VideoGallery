@@ -4,3 +4,6 @@ greetingsText {
     font-size: 15;
     font-weight: bold;
 }
+div.main {
+    background-color: #3366CC;
+}

@@ -11,6 +11,6 @@ namespace VideoGallery.Abstract
     /// </summary>
     public interface IFilmSearchServer
     {
-        Task<string> GetListOfFilmsByFilmNameSearchQuery(string filmName);
+        Task<string> GetListOfFilmsByFilmNameSearchQuery(string filmName, string page);
     }
 }

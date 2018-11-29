@@ -36,9 +36,9 @@ namespace VideoGallery.PlatformModel.PlatformConcrete
         /// </summary>
         /// <param name="FilmName"></param>
         /// <returns></returns>
-        public IQueryModel CreateQueryResponseByFilmName (string FilmName)
+        public IQueryModel CreateQueryResponseByFilmName (string FilmName, string page)
         {
-            return _strategyToSearch.ConstructQuerySearchByFilmName(FilmName);
+            return _strategyToSearch.ConstructQuerySearchByFilmName(FilmName, page);
 
         }
 

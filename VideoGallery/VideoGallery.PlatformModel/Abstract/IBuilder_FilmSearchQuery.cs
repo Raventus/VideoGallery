@@ -14,6 +14,7 @@ namespace VideoGallery.PlatformModel.Abstract
         void ClearQueryObject();
         void BuildNameOfFilm(string nameOfFilm);
         void BuildYearOfFoundation(string yearOfFilm);
+        void BuildPageNumber(string page);
         IQueryModel GetQueryObject();
 
     }

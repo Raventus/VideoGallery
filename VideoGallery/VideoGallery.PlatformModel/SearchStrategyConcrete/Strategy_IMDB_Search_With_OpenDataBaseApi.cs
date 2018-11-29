@@ -19,10 +19,10 @@ namespace VideoGallery.PlatformModel.SearchStrategyConcrete
         /// <param name="builder">Строитель объекта для запроса</param>
         public Strategy_IMDB_Search_With_OpenDataBaseApi(IBuilder_FilmSearchQuery builder)
         {
-            this._builder = builder;
+            SetBuilder(builder);
         }
 
-        public void ChangeBuilder(IBuilder_FilmSearchQuery builder)
+        public void SetBuilder(IBuilder_FilmSearchQuery builder)
         {
             this._builder = builder;
         }
@@ -33,11 +33,12 @@ namespace VideoGallery.PlatformModel.SearchStrategyConcrete
        /// <param name="name">Название фильма </param>
        /// <param name="year">Год создания</param>
        /// <returns></returns>
-        public override IQueryModel ConstructQuerySearchByNameAndYear(string name, string year)
+        public override IQueryModel ConstructQuerySearchByNameAndYear(string name, string year, string page)
         {
             _builder.ClearQueryObject();           
             _builder.BuildNameOfFilm(name);
             _builder.BuildYearOfFoundation(year);
+            _builder.BuildPageNumber(page);
             return _builder.GetQueryObject();
         }
 
@@ -46,10 +47,11 @@ namespace VideoGallery.PlatformModel.SearchStrategyConcrete
         /// </summary>
         /// <param name="name">Название фильма</param>
         /// <returns></returns>
-        public override IQueryModel ConstructQuerySearchByFilmName(string name)
+        public override IQueryModel ConstructQuerySearchByFilmName(string name, string page)
         {
             _builder.ClearQueryObject();
             _builder.BuildNameOfFilm(name);
+            _builder.BuildPageNumber(page);
             return _builder.GetQueryObject();
         }
     }

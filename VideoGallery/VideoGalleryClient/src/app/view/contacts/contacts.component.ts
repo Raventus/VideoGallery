@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import  {AuthorModelService} from '../model/author-model-service';
+import  {AuthorModelService} from '../../services/additional/author-model-service';
 
 @Component({
   selector: 'app-contacts',
   templateUrl: './contacts.component.html',
-  styleUrls: ['./contacts.component.css']
+  styleUrls: ['./contacts.component.css' , ]
 })
 export class ContactsComponent implements OnInit {
 

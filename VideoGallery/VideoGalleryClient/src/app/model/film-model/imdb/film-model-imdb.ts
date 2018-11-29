@@ -11,6 +11,4 @@ export  class FilmModelIMDB implements FilmModelAbstract{
     Poster: string;
     // ссылка на источник
     imdbID: string;
-
-    //isRecent: boolean;
   }

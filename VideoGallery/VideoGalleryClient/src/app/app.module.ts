@@ -2,27 +2,37 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { HttpClientModule} from "@angular/common/http";
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import {RouterModule} from "@angular/router"
 
+
+//Компоненты
 import { AppComponent } from './app.component';
+import { MenuComponent } from './view/menu/menu.component';
+import {GreetingsComponent} from './view/greetings/greetings.component';
+import {SearchFilmComponent} from './view/search-film/search-film.component';
+import {ViewFilmsComponent} from './view/view-films/view-films.component';
+import { ContactsComponent } from './view/contacts/contacts.component';
 
-import { MenuComponent } from './menu/menu.component';
-import {GreetingsComponent} from './greetings/greetings.component';
-import {SearchFilmComponent} from './search-film/search-film.component';
-import {ViewFilmsComponent} from './view-films/view-films.component';
 
+import {PlatformAbstractService} from './services/platform-service/abstract/platform-abstract.service';
+import {ImdbPlatformService} from './services/platform-service/imdb/imdb-platform-model.service';
 
-import {PlatformModelAbstract} from './model/platform-model/abstract/platform-model-abstract';
-import {ImdbPlatformModelService} from './model/platform-model/imdb/imdb-platform-model.service';
-import  {AuthorModelService} from './model/author-model-service';
+import  {AuthorModelService} from './services/additional/author-model-service';
+
 import {SearhModelAbstractService} from './model/search-model/abstract/searh-model-abstract.service';
 import {ImdbSearchModelService} from './model/search-model/imdb/imdb-search-model.service';
-import {HttpRequestServer, REQUEST_URL} from './model/http-request-model';
+
+import {HttpRequestAbstractService, REQUESTURL} from './services/http-request-service/abstract/http-request-abstract.service';
+import {HttpRequestImdbService, REQUESTURLIMDB} from './services/http-request-service/imdb/http-request-imdb.service';
+//import {HttpRequestServer, REQUEST_URL} from './model/http-request-model';
+
+import {ResultModelAbstract} from './model/result-model/abstract/result-model-abstract';
+import {ResultModelIMDB} from './model/result-model/imdb/result-model-imdb';
 
 import {ROUTES} from './app.routes';
-import { ContactsComponent } from './contacts/contacts.component';
+
 
 
 const SERVER_PORT = 4100;
@@ -42,14 +52,18 @@ const SERVER_PORT = 4100;
     HttpClientModule, 
     BrowserModule,
     FormsModule, 
+    ReactiveFormsModule,
      RouterModule.forRoot(ROUTES)
   ],
   providers: [
-    {provide: PlatformModelAbstract, useClass: ImdbPlatformModelService }
+    {provide: PlatformAbstractService, useClass: ImdbPlatformService }
     , {provide: SearhModelAbstractService, useClass: ImdbSearchModelService}
+    , {provide: HttpRequestAbstractService, useClass: HttpRequestImdbService}
     , AuthorModelService
-    , HttpRequestServer
-    ,{provide: REQUEST_URL, useValue: `http://${location.hostname}:${SERVER_PORT}/api/VideoGalleryApi/`}
+    //, HttpRequestServer
+    ,{provide: REQUESTURL, useValue: `http://${location.hostname}:${SERVER_PORT}/api/VideoGalleryApi/`}
+    ,{provide: REQUESTURLIMDB, useValue: `http://${location.hostname}:${SERVER_PORT}/api/VideoGalleryApi/`}
+    ,{provide:ResultModelAbstract, useClass:ResultModelIMDB}
   ],
   bootstrap: [AppComponent]
 })
