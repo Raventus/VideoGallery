@@ -6,7 +6,7 @@ import {FilmModelIMDB} from '../../../model/film-model/imdb/film-model-imdb';
 import {FormFilmIMDBGroup} from "../../../model/form-film-control/imdb/form-film-imdb-control"
 import {HttpRequestAbstractService} from '../../http-request-service/abstract/http-request-abstract.service';
 import {ResultModelAbstract} from '../../../model/result-model/abstract/result-model-abstract';
-
+import {ResultModelIMDB} from '../../../model/result-model/imdb/result-model-imdb';
 import 'rxjs-compat';
 
 
@@ -26,14 +26,22 @@ export class ImdbPlatformService implements PlatformAbstractService {
     new ParameterItem ("Year of film creation")
   ];
   
+  _resultSearch: ResultModelAbstract = new ResultModelIMDB();
 
-  FilmCollection: FilmModelIMDB[];
+  public get resSearch (): Observable <ResultModelIMDB> {
+      return this._resSearch;
+  }
+
+  public set resSearch (value: Observable <ResultModelIMDB>) {
+    this._resSearch = value;
+  }
 
 
-  _resultSearch: ResultModelAbstract;
+  _resSearch: Observable<ResultModelAbstract> = new Observable <ResultModelIMDB>();
+ 
+
  // searchModel - служба для поиск0а моделей
-  constructor(private searchModel:SearhModelAbstractService, public httpserver: HttpRequestAbstractService,  resultSearch: ResultModelAbstract) {
-    this._resultSearch = resultSearch; 
+  constructor(private searchModel:SearhModelAbstractService, public httpserver: HttpRequestAbstractService) {
   }
 
   // Форма для поиска под конкретную платформу (imdb)
@@ -45,26 +53,42 @@ export class ImdbPlatformService implements PlatformAbstractService {
   }
   queryString : SearchParameter[] = [];
 
-  fillQueryStringFromForm() {
+  fillQueryStringFromForm(page: string) {
     this.form.FormFilmControls.forEach(element => {
      this.queryString.push(new SearchParameter(element._property, element.value));
+     this.queryString.push(new SearchParameter("page", page));
    });
  }
 
- doPlatformSearch (){
-    this.fillQueryStringFromForm();
-    this.httpserver.Get(this.queryString).map(element=> JSON.parse(element.Data))
-    .subscribe (val => { 
-      this._resultSearch.filmRequestCollection = val.Search;
-      this._resultSearch.countOfFilms = val.totalResults; 
-      this._resultSearch.isValid = val.Response; 
-      console.log (val);
-      console.log(this._resultSearch);
-       }); 
+ doPlatformSearch (page:string): Observable<ResultModelAbstract> {
+  if (this._resultSearch.getFilmCollectionFromCashe("", page) === null)
+  {
+  this.fillQueryStringFromForm(page); 
+  return this.httpserver.Get(this.queryString)
+                  .map(dataitem => {
+                    var result = new ResultModelIMDB();
+                    result.countOfFilms = dataitem.Data.totalResults;
+                    result.filmRequestCollection = dataitem.Data.Search;
+                    result.isValid = dataitem.Data.Response;
+                    this._resultSearch = result;
+                    this._resultSearch.casheFilmCollection.allPageFilmCollection[page] = dataitem.Data.Search;
+                    return result;
+                  })
+                }
+                else {
 
-  }
+                return this._resultSearch.casheFilmCollection.allPageFilmCollection[page];
+              }
+                  
+       } 
 
 
+  // .subscribe (val => { 
+  //   this._resultSearch.filmRequestCollection = val.Search;
+  //   this._resultSearch.countOfFilms = val.totalResults; 
+  //    this._resultSearch.isValid = val.Response; 
+  //    console.log (val);
+  //  console.log(this._resultSearch)
   
   // добавляется к ссылке, если она отнасительная
   hostURL: string = "https://www.imdb.com/title/";

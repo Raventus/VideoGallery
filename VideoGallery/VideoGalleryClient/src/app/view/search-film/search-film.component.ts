@@ -30,21 +30,21 @@ export class SearchFilmComponent implements OnInit {
   getSearchModel(): SearhModelAbstractService {
     return this._platform.GetSearchModel();
   }
-  // form submit function 
+
+  // form submit function and navigate to viewFilms
   DoSearch(form: NgForm)
   {
+    var PAGE_START  = "1";
     this.formSubmitted = true;
     if (form.valid) {
-      this._platform.doPlatformSearch();
-      console.log (this._platform._resultSearch.isValid);
-      if (this._platform._resultSearch.isValid) {
-        this.router.navigateByUrl("viewFilms");  
-      }
-        
+      this._platform.doPlatformSearch(PAGE_START).subscribe(response => {
+        if (response.isValid) {
+          this.router.navigateByUrl("viewFilms");  
+        }
+      });
       this.formSubmitted = false;
     }
     else {
-     // form.reset;
       this.errorMessage = "Form Data Invalid";
     }
   }
