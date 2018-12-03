@@ -1,5 +1,5 @@
 import { Component, OnInit, ApplicationRef } from '@angular/core';
-import { Router } from "@angular/router";
+import { Router , Event, NavigationStart, NavigationEnd} from "@angular/router";
 import {PlatformAbstractService, ParameterItem} from '../../services/platform-service/abstract/platform-abstract.service';
 import {SearhModelAbstractService} from '../../model/search-model/abstract/searh-model-abstract.service';
 //import {HttpRequestServer} from '../../model/http-request-model';
@@ -15,30 +15,34 @@ export class SearchFilmComponent implements OnInit {
 
    errorMessage: string;
 
-   // bool is form is try to sumbitting
+   //  is form  try to sumbitting
    formSubmitted: boolean;
-
+   showLoadingIndicator: boolean = false;
 
   // _platform - current platform to serach films
-  constructor(private router: Router, public _platform :PlatformAbstractService /*, private httpRequest: HttpRequestServer*/) { }
-
-  // return current platform
-  getPlatform (): PlatformAbstractService {
-    return this._platform;
-  }
-  // return search model of current platform
-  getSearchModel(): SearhModelAbstractService {
-    return this._platform.GetSearchModel();
+  constructor(private router: Router, public _platform :PlatformAbstractService) { 
+    this.router.events.subscribe((routerEvent: Event)=> {
+      if (routerEvent instanceof NavigationStart) {
+        this.showLoadingIndicator = true;
+      }
+      else if (routerEvent instanceof NavigationEnd) {
+          this.showLoadingIndicator = false;
+      }
+    });
   }
 
   // form submit function and navigate to viewFilms
   DoSearch(form: NgForm)
   {
-    var PAGE_START  = "1";
     this.formSubmitted = true;
     if (form.valid) {
-      this._platform.doPlatformSearch(PAGE_START).subscribe(response => {
-        if (response.isValid) {
+      this.showLoadingIndicator = true;
+      console.log (this.showLoadingIndicator);
+      this._platform.GetResultCollection().subscribe(response => {
+        console.log(response.isValidAnswerFromServer);
+        if (response.isValidAnswerFromServer) {
+          this.showLoadingIndicator = false;
+          console.log (this.showLoadingIndicator);
           this.router.navigateByUrl("viewFilms");  
         }
       });
@@ -48,40 +52,6 @@ export class SearchFilmComponent implements OnInit {
       this.errorMessage = "Form Data Invalid";
     }
   }
-  /*
-// function to return the mistake string of all form element
-  getFormValidationMessages (form: NgForm): string[] {
-    let messages : string[] = [];
-    Object.keys(form.controls).forEach (item => {
-      this.getValidationMessage (form.controls[item], item).forEach(element => messages.push(element));
-        
-      });
-      return messages;
-    }
-    // function to return the mistake string of one form element
-  getValidationMessage (state: any, thingName?: string) {
-    let thing: string = state.path || thingName;
-    let messages: string[] = [];
-    if (state.errors) {
-        for (let errorName in state.errors) {
-          switch (errorName) {
-            case "required":
-              messages.push (`You must enter a ${thing}`);
-              break;
-            case "minlength":
-              messages.push (`A ${thing} must be at least ${state.errors['minlength'].requiredLength} characters`);
-              break;
-            case 'pattern':
-              messages.push(`The ${thing} contains illegal characters`);
-              break;
-          }
-        }
-    }
-    console.log (messages);
-    return messages;
-  }*/
-
-
 
   ngOnInit() {
 

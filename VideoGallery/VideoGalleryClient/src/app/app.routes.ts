@@ -1,4 +1,4 @@
-import { Routes } from '@angular/router';
+import { Routes, NavigationStart, NavigationEnd } from '@angular/router';
 import {GreetingsComponent} from './view/greetings/greetings.component';
 import {SearchFilmComponent} from './view/search-film/search-film.component';
 import {ContactsComponent} from './view/contacts/contacts.component';

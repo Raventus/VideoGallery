@@ -3,8 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { HttpClientModule} from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpModule } from '@angular/http';
-import {RouterModule} from "@angular/router"
+import {RouterModule, NavigationStart, NavigationEnd } from "@angular/router"
 
 
 //Компоненты

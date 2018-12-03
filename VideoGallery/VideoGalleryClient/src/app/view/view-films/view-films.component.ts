@@ -1,7 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpRequestServer} from '../../model/http-request-model';
-import {FilmModelIMDB} from '../../model/film-model/imdb/film-model-imdb';
-import {PlatformAbstractService} from '../../services/platform-service/abstract/platform-abstract.service';
+import { FilmModelIMDB } from '../../model/film-model/imdb/film-model-imdb';
+import { PlatformAbstractService } from '../../services/platform-service/abstract/platform-abstract.service';
+import 'rxjs-compat';
+import { from, Observable } from 'rxjs';
+
+
+import { ResultModelIMDB } from '../../model/result-model/imdb/result-model-imdb';
+import { ResultModelAbstract } from '../../model/result-model/abstract/result-model-abstract';
 
 
 
@@ -12,28 +17,33 @@ import {PlatformAbstractService} from '../../services/platform-service/abstract/
 })
 export class ViewFilmsComponent implements OnInit {
 
-  
-
-  
-  FilmCollection: FilmModelIMDB[];
-  currentCountOfSearch: number;
-
-  constructor(/*private httpRequest: HttpRequestServer,*/ private _platform: PlatformAbstractService) { 
-    
+  ngOnInit() {
   }
 
-  ngOnInit() {
-    /*this.httpRequest.Get()
-    .map(item=>  JSON.parse(item.Data))
-    .subscribe(val =>{ 
-      val.Search.forEach (element => element.imdbID = this._platform.hostURL + element.imdbID);
-      this._platform.FilmCollection = val.Search;  
-      this.currentCountOfSearch = val.totalResults;
-      console.log (val);
-      console.log (this.currentCountOfSearch );
-    }
-      );*/
+  private pageSizer: Number;
+  private selectedPage: number = 1;
+  _resultSearch: ResultModelAbstract = new ResultModelIMDB();
 
+  constructor(private _platform: PlatformAbstractService) {
+    this.pageSizer = _platform.GetCountOfPages();
+    this._platform.GetResultCollection().subscribe(
+      collection => this._resultSearch = collection
+    );
+    console.log(this._resultSearch);
+  }
+  changePage(newPage: number) {
+    this.selectedPage = newPage;
+
+    this._platform.GetResultCollection(this.selectedPage.toString()).subscribe(
+
+      collection => {
+        this._resultSearch = collection;
+      }
+    )
+  }
+
+  get PageNumbers(): number[] {
+    return Array(this.pageSizer).fill(0).map((x, i) => i + 1);
   }
 }
 

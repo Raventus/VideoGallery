@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Results;
@@ -45,6 +46,7 @@ namespace VideoGallery.WebAPI.Controllers
         [System.Web.Http.HttpGet]
         public async Task<JsonResult> GetVideoGalleryByFullNameAsync (string filmName = "Fast and Furious", string page = "1")
         {
+            Thread.Sleep(2000);
             return  new JsonResult()
                         { Data = await _searchServer.GetListOfFilmsByFilmNameSearchQuery(filmName, page) };
 

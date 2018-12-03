@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {SearhModelAbstractService} from '../../../model/search-model/abstract/searh-model-abstract.service';
 import {FilmModelAbstract} from '../../../model/film-model/abstract/film-model-abstract';
 import {ResultModelAbstract} from '../../../model/result-model/abstract/result-model-abstract'
+import {HttpRequestAbstractService} from '../../http-request-service/abstract/http-request-abstract.service';
 import 'rxjs-compat';
 import { from, Observable } from 'rxjs';
 
@@ -9,23 +10,23 @@ import { from, Observable } from 'rxjs';
 @Injectable()
 export abstract class  PlatformAbstractService {
 
-    constructor() {}
+    constructor(public searchModel:SearhModelAbstractService
+        , public _resultFilmModel:ResultModelAbstract
+        , public httpserver: HttpRequestAbstractService) {
+}  
      // имя платформы
      public abstract nameOfPlatform : string;
-
-     _resultSearch: ResultModelAbstract; 
-
     // список параметров для поиска (текстовый)
     public abstract ListOfParametersToSearch: ParameterItem [];
    
+    cacheCollectoin: Array<FilmModelAbstract[]>; 
+    public abstract HasFilmCollectionFromCache (page: string) : boolean;
     
     
-    // абстрактный метод для предоставления службы поиска фильмов
-    public abstract GetSearchModel () :SearhModelAbstractService;
+    public abstract GetResultCollection (page?: string): Observable<ResultModelAbstract>;
 
- 
 
-    public abstract doPlatformSearch (page: string): Observable<ResultModelAbstract>;
+    public abstract GetCountOfPages () : Number;
 
     
 }
