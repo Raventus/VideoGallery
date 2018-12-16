@@ -1,4 +1,8 @@
-.padding5 {
-    padding: 5em;
+.marginbotelement3 {
+    margin-bottom: 3em;
     height: 100%;
+}
+
+.marginbot5 {
+    margin-bottom: 7em !important;
 }

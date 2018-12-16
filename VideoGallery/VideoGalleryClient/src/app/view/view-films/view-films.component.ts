@@ -42,8 +42,6 @@ export class ViewFilmsComponent implements OnInit {
   _resultSearch: ResultModelAbstract = new ResultModelIMDB();
 
   redirectToDetailOfFilm (filmToDetailRedirect: FilmModelAbstract) {
-    console.log ("Do navigation");
-    console.log ("detailFilm/" + filmToDetailRedirect.imdbID);
     this.router.navigateByUrl("detailFilm/" + filmToDetailRedirect.imdbID); 
   }
 

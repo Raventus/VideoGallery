@@ -20,9 +20,8 @@ export class DetailFilmComponent implements OnInit {
     this.filmId = actRoute.snapshot.params["filmID"];
     platform.GetDetailFilm(this.filmId).subscribe(data=>{
       this.viewModel = data;
-      console.log (this.viewModel);
+      console.log ("imdbID " + this.viewModel.imdbID);   
     });
-    console.log (this.viewModel);
   }
 
   ngOnInit() {

@@ -91,6 +91,8 @@ export class ImdbPlatformService implements PlatformAbstractService {
                           .map (dataitem => {
                             console.log(dataitem);
                             this.DetailFilm = dataitem;
+                            this.DetailFilm.Reference =  dataitem.imdbID;
+                            console.log (this.DetailFilm.Reference );
                               return this.DetailFilm;
                           });
 

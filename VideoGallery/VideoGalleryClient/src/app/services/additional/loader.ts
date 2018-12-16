@@ -7,10 +7,9 @@ import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 export class LoaderService {
  
     public ShowIndicator: BehaviorSubject<boolean> =
-    new BehaviorSubject<boolean>(false);
+    new BehaviorSubject<boolean>(true);
 
     display (value: boolean) {
         this.ShowIndicator.next(value);
-        console.log (value);
     }
 }

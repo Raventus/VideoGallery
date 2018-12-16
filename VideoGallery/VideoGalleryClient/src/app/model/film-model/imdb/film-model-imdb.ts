@@ -15,7 +15,7 @@ export  class FilmModelIMDB implements FilmModelAbstract{
   Country: string;
   Actors: string;
   Avards: string;
-  imdbID:string;
+ 
   Ratings: string;
     // название
     Title: string;
@@ -23,16 +23,41 @@ export  class FilmModelIMDB implements FilmModelAbstract{
     Year: string;
     // постер
     Poster: string;
-    
-    _imdbID: string;
-    // ссылка на источник
-    get Reference(): string {
-        return this._imdbID;
+  
+
+
+
+
+    get imdbID ():string {
+      return  this._imdbID; 
     }
 
-    set Reference(newValue: string) {
-      this._imdbID = this.hostURL + newValue;
+    set imdbID(newValue:string) {
+      this._imdbID = newValue;
+      this.Reference = this.hostURL + newValue;
+      console.log (this.Reference );
     }
+
+    _imdbID: string ;
+    _reference: string ;
+    get Reference ():string {
+      return this._reference;
+    }
+
+    set Reference (newValue:string){
+      console.log ("report from set");
+      this._reference = this.hostURL + newValue;
+    }
+    //ссылка на источник
+    // get Reference(): string {
+    //     return this._imdbID;
+    // }
+    // set Reference(newValue: string) {
+    //   this._imdbID = this.hostURL + newValue;
+    // }
+
+
+  
 
     // добавляется к ссылке, если она отнасительная
   hostURL: string = "https://www.imdb.com/title/";

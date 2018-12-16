@@ -1,14 +1,15 @@
 <!-- <div class="mx-auto">
   <h3>The current search gets <span>{{_resultSearch.totalcountOfFilmsByKeyword}}</span> results</h3>
 </div> -->
-<div class="d-flex flex-wrap container-fluid padding5">
-  <div *ngFor="let item of _resultSearch.currentFilmCollectionForView" class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
-    <div class="card"  (click)="redirectToDetailOfFilm(item)"></div>
+<div class="d-flex flex-wrap container-fluid marginbot5">
+  <div *ngFor="let item of _resultSearch.currentFilmCollectionForView" class="col-xl-3 col-lg-4 col-md-6 col-sm-12 marginbotelement3">
+    <div class="card mx-auto">
       <img [src]="item.Poster">
-      <div class="mx-auto">
-        <a (click)="redirectToDetailOfFilm(item)" href="detailFilm/{{item.imdbID}}" class="center-block" alt="No image"> {{item.Title}} - {{item.Year}}</a>
+      <div class="text-center">
+        <a  href="detailFilm/{{item.imdbID}}"  alt="No image"> {{item.Title}} - {{item.Year}}</a>
       </div>
     </div>
+  </div>
   </div>
 
 

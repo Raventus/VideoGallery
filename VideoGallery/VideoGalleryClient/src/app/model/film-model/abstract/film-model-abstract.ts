@@ -1,6 +1,6 @@
 
 // абстрактный класс для представления фильма
-export  class FilmModelAbstract {
+export  abstract class FilmModelAbstract {
   Title: string;
   Year: string;
   Poster: string;
@@ -20,10 +20,7 @@ export  class FilmModelAbstract {
   imdbRating: string;
   imdbVotes: string;
   Country: string;
- 
-
-
-
+  //Reference: string;
 
 
   Plot: string;

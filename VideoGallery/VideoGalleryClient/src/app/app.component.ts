@@ -10,7 +10,8 @@ import { Observable } from 'rxjs';
 })
 export class AppComponent {
   title = 'VideoGalleryClient';
-  isShowIndicator: boolean;
+  isShowIndicator: boolean = true;
+
   constructor (private _router: Router, private loader: LoaderService, public cd: ChangeDetectorRef) {
     this._router.events.subscribe(( routerEvent: Event) => {
       if (routerEvent instanceof NavigationStart) {
@@ -22,7 +23,7 @@ export class AppComponent {
         this.isShowIndicator = false;
       }
       this.cd.detectChanges();
-    })
+    });
     this.loader.ShowIndicator.subscribe (element => {
       console.log ("Show Indicator " + `${element}`);
       this.isShowIndicator = element;
