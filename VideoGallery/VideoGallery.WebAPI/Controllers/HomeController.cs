@@ -35,5 +35,25 @@ namespace VideoGallery.WebAPI.Controllers
                     HttpRoute = true
                 });
         }
+
+
+
+        /// <summary>
+        /// Метод для отправки формы с поисковым запросом
+        /// </summary>
+        /// <param name="FilmName">строка запроса</param>
+        /// <returns></returns>
+        [HttpPost]
+        public RedirectToRouteResult SubmitDetailQuery(string _ID)
+        {
+            return RedirectToRoute(
+                "videoGalleryApiDetailRoute"
+                , new
+                {
+                    controller = "VideoGalleryApi",
+                    ID = _ID,
+                    HttpRoute = true
+                });
+        }
     }
 }

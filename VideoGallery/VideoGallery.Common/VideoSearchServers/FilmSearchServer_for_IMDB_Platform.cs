@@ -21,6 +21,13 @@ namespace VideoGallery.VideoSearchServers
             this._requestToFilmServerStrategy = requestToFilmServerStrategy;
         }
 
+        public Task<string> GetConcreteFilmByID(string ID)
+        {
+            IQueryModel QueryToFilmDataServer = _filmPlatform.CreateQueryResponseByUd(ID);
+            string FullUrl = QueryToFilmDataServer.FullQueryString;
+            return _requestToFilmServerStrategy.GetResponseByFullQueryStringAsync(FullUrl);
+        }
+
         public Task<string> GetListOfFilmsByFilmNameSearchQuery(string filmName, string page)
         {
             IQueryModel QueryToFilmDataServer = _filmPlatform.CreateQueryResponseByFilmName(filmName, page);

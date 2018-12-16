@@ -25,6 +25,7 @@ namespace VideoGallery.PlatformModel.QueryBuilderConcrete
         private const string _filmName = "FilmName";
         private const string _yearOfCreation = "YearOfCreation";
         private const string _keyAuth = "KeyAuthTail";
+        private const string _id = "IMDB_ID";
         private const string _page = "page";
 
        
@@ -54,6 +55,7 @@ namespace VideoGallery.PlatformModel.QueryBuilderConcrete
                 QueryParameterDictionary[_yearOfCreation] = "y";
                 QueryParameterDictionary[_page] = "page";
                 QueryParameterDictionary[_keyAuth] = "apikey";
+                QueryParameterDictionary[_id] = "i";
             }
             else
             {
@@ -72,6 +74,10 @@ namespace VideoGallery.PlatformModel.QueryBuilderConcrete
             {
                 QueryObject.YearOfCreation = null;
             }
+            if (!string.IsNullOrEmpty(QueryObject.ID))
+            {
+                QueryObject.ID = null;
+            }
         }
         public void BuildNameOfFilm(string nameOfFilm)
         {
@@ -85,6 +91,16 @@ namespace VideoGallery.PlatformModel.QueryBuilderConcrete
             queryStringOfRequest[QueryParameterDictionary[_yearOfCreation]] = yearOfFilm;
         }
 
+        public void BuildPageNumber(string page)
+        {
+            queryStringOfRequest[QueryParameterDictionary[_page]] = page;
+        }
+
+        public void BuildID(string ID)
+        {
+            queryStringOfRequest[QueryParameterDictionary[_id]] = ID;
+        }
+
         public IQueryModel GetQueryObject()
         {
             queryStringOfRequest[QueryParameterDictionary[_keyAuth]] = _authKey;
@@ -94,9 +110,5 @@ namespace VideoGallery.PlatformModel.QueryBuilderConcrete
             return QueryObject;
         }
 
-        public void BuildPageNumber(string page)
-        {
-            queryStringOfRequest[QueryParameterDictionary[_page]] = page;
-        }
     }
 }

@@ -12,5 +12,7 @@ namespace VideoGallery.Abstract
     public interface IFilmSearchServer
     {
         Task<string> GetListOfFilmsByFilmNameSearchQuery(string filmName, string page);
+
+        Task<string> GetConcreteFilmByID(string ID);
     }
 }

@@ -18,4 +18,6 @@ export abstract class HttpRequestAbstractService {
   }
 
   abstract Get(searchParameter: SearchParameter[]): Observable<any> ;
+
+  abstract GetDetail(filmID: string): Observable<any> ;
 }

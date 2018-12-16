@@ -39,7 +39,15 @@ namespace VideoGallery.PlatformModel.PlatformConcrete
         public IQueryModel CreateQueryResponseByFilmName (string FilmName, string page)
         {
             return _strategyToSearch.ConstructQuerySearchByFilmName(FilmName, page);
-
+        }
+        /// <summary>
+        /// Метод создания запроса конкретного фильма по его ID
+        /// </summary>
+        /// <param name="ID">ID фильма</param>
+        /// <returns></returns>
+        public IQueryModel CreateQueryResponseByUd (string ID)
+        {
+            return _strategyToSearch.ConstructQuerySearchByID(ID);
         }
 
     }

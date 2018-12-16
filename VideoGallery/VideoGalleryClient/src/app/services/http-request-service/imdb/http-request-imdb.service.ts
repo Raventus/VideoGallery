@@ -2,7 +2,8 @@ import { Injectable, Inject, InjectionToken  } from "@angular/core";
 import {Observable} from "rxjs";
 import 'rxjs-compat';
 import {HttpClient, HttpParams } from '@angular/common/http';
-import {SearchParameter} from '../../platform-service/imdb/imdb-platform-model.service'
+import {SearchParameter} from '../../platform-service/imdb/imdb-platform-model.service';
+import {LoaderService} from '../../../services/additional/loader';
 
 
 
@@ -13,12 +14,16 @@ export const REQUESTURLIMDB = new InjectionToken ("request_url");
 })
 export class HttpRequestImdbService {
 
-  constructor (private http: HttpClient, @Inject(REQUESTURLIMDB) private url: string){
+  constructor (private http: HttpClient
+    , @Inject(REQUESTURLIMDB) private url: string
+    , private loader: LoaderService
+    ){
     console.log (url);
 
 }
 
 Get(searchParameter: SearchParameter[]): Observable<any> {
+    this.loader.display(true);
     let parameters = new HttpParams();
     for (var i=0; i < searchParameter.length; i++)
     {
@@ -26,8 +31,27 @@ Get(searchParameter: SearchParameter[]): Observable<any> {
       if (searchParameter[i].value == undefined) {
         continue;
       }
+      console.log (`parameter is ${searchParameter[i].name}  - ${searchParameter[i].value}`);
       parameters = parameters.append(searchParameter[i].name, searchParameter[i].value);
     }
-    return this.http.get(this.url, {params: parameters});
+    console.log ("url to connect " + this.url);
+    var result =  this.http.get(this.url, {params: parameters});
+    this.loader.display(false);
+    return result;
 }
+
+
+GetDetail(filmId:string): Observable<any> {
+  this.loader.display(true);
+  var urlToDetailRequest : string = this.url + filmId;
+  console.log ("url to connect " + urlToDetailRequest);
+  var result =  this.http.get(urlToDetailRequest);
+  console.log (result);
+  this.loader.display(false);
+  return result;
+}
+
+
+
+
 }

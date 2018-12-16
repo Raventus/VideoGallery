@@ -39,17 +39,29 @@ namespace VideoGallery.WebAPI.Controllers
         }
 
         /// <summary>
-        /// Получение результатов по названию фильма
+        /// Получение результатов по ключевому слову 
         /// </summary>
         /// <param name="filmName">Название фильма или его часть</param>
         /// <returns></returns>
         [System.Web.Http.HttpGet]
         public async Task<JsonResult> GetVideoGalleryByFullNameAsync (string filmName = "Fast and Furious", string page = "1")
         {
-            Thread.Sleep(2000);
             return  new JsonResult()
                         { Data = await _searchServer.GetListOfFilmsByFilmNameSearchQuery(filmName, page) };
-
         }
+
+        /// <summary>
+        /// Получение результатов по названию фильма
+        /// </summary>
+        /// <param name="ID">ID фильма</param>
+        /// <returns></returns>
+        [System.Web.Http.HttpGet]
+        public async Task<JsonResult> GetConcreteFilmByIDAsync(string ID)
+        {
+            return new JsonResult()
+            { Data = await _searchServer.GetConcreteFilmByID(ID)};
+        }
+
+
     }
 }

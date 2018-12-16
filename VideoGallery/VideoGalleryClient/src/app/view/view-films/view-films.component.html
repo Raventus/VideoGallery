@@ -1,19 +1,44 @@
-<div>
+<!-- <div class="mx-auto">
   <h3>The current search gets <span>{{_resultSearch.totalcountOfFilmsByKeyword}}</span> results</h3>
-  <button class="btn btn-info btn-block" routerLink='/searchFilms'>Back to search</button>
-</div>
-<div class="d-flex flex-wrap container-fluid">
+</div> -->
+<div class="d-flex flex-wrap container-fluid padding5">
   <div *ngFor="let item of _resultSearch.currentFilmCollectionForView" class="col-xl-3 col-lg-4 col-md-6 col-sm-12">
-    <div class="card">
+    <div class="card"  (click)="redirectToDetailOfFilm(item)"></div>
       <img [src]="item.Poster">
-      <div>
-        <a [href]="item.imdbID" target="_blank" alt="No image">{{item.Title}} - {{item.Year}}</a>
+      <div class="mx-auto">
+        <a (click)="redirectToDetailOfFilm(item)" href="detailFilm/{{item.imdbID}}" class="center-block" alt="No image"> {{item.Title}} - {{item.Year}}</a>
       </div>
     </div>
   </div>
-</div>
-<div class="btn-group pull-xs-right">
-  <button *ngFor="let page of PageNumbers" (click)="changePage(page)" class="btn btn-outline-primary" [class.active]="page == selectedPage">
-    {{page}}
-  </button>
+
+
+
+
+<!--Pager-->
+<div class="container-fluid fixed-bottom" style="background-color: #00BFFF">
+  <nav aria-label="Page navigation mx-auto container-fluid">
+    <ul class="pagination justify-content-center">
+      <li class="page-item btn">
+        <button class="  page-link" (click)="changePage(1)" [disabled]="selectedPage == 1" [ngClass]="{'disabled': selectedPage == 1, 'bg-info': selectedPage == 1}" >Start</button>
+      </li>
+      <li class=" btn  page-item">
+        <button class="page-link" [disabled]="selectedPage == 1"  (click)="changePage(selectedPage-1)"  [ngClass]="{'disabled': selectedPage == 1, 'bg-info': selectedPage == 1}" >Previous</button>
+      </li>
+      <li *pagerCounter="let page of [selectedPage, countOfPage]" (click)="changePage(page)" class="btn  page-item "
+        >
+        <button class="page-link  text-light" [ngClass]="{'bg-primary': page == selectedPage,  'bg-secondary':page != selectedPage}" [class.active]="page == selectedPage">
+          {{page}}
+        </button>
+      </li>
+      <li class="page-item btn ">
+        <button class="page-link" (click)="changePage(selectedPage+1)" [disabled]="selectedPage == countOfPage" [ngClass]="{'disabled': selectedPage == countOfPage, 'bg-info': selectedPage == countOfPage}" >Next</button>
+      </li>
+      <li class="page-item btn">
+        <button class="page-link" (click)="changePage(countOfPage)"  [disabled]="selectedPage == countOfPage" [ngClass]="{'disabled': selectedPage == countOfPage, 'bg-info': selectedPage == countOfPage}" >End</button>
+      </li>
+    </ul>
+  </nav>
+  <div class="container-fluid">
+    <button class="btn btn-info btn-block" routerLink='/searchFilms'>Back to search</button>
+  </div>
 </div>

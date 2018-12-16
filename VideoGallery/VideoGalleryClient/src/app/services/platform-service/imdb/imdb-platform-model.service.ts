@@ -82,6 +82,20 @@ export class ImdbPlatformService implements PlatformAbstractService {
                     });
   }
 
+  DetailFilm : FilmModelIMDB = new FilmModelIMDB();
+  
+  GetDetailFilm (filmId: string): Observable<FilmModelIMDB> {
+    
+    return this.httpserver.GetDetail (filmId)
+                          .map(item=> JSON.parse(item.Data))
+                          .map (dataitem => {
+                            console.log(dataitem);
+                            this.DetailFilm = dataitem;
+                              return this.DetailFilm;
+                          });
+
+  }
+
    
 
 
@@ -96,23 +110,10 @@ queryString : SearchParameter[];
      this.queryString.push(new SearchParameter(formcontrol._property, formcontrol.value));
    });
    this.queryString.push(new SearchParameter("page", page));
- }  
+ }
+ 
 
-  // region Pager
-  _filmsPerPage: number = 10;
-  // Определение количества страниц для поиска
-  GetCountOfPages() : number {
-    console.log (this._resultFilmModel.totalcountOfFilmsByKeyword );
-    if (this._resultFilmModel.totalcountOfFilmsByKeyword)
-    {
-      return Math.ceil(this._resultFilmModel.totalcountOfFilmsByKeyword / this._filmsPerPage);
-    }
-    else {
-      throw Error("Количество страниц не определено: не объявлено количество фильмов в коллекции");
-    }
-  }
 
-  // endregion
 }
 
 

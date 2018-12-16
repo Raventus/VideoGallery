@@ -12,5 +12,6 @@ namespace VideoGallery.PlatformModel.Abstract
     public interface IFilmPlatform
     {
         IQueryModel CreateQueryResponseByFilmName(string FilmName, string page);
+        IQueryModel CreateQueryResponseByUd(string ID);
     }
 }

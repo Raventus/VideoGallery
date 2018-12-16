@@ -25,8 +25,9 @@ export abstract class  PlatformAbstractService {
     
     public abstract GetResultCollection (page?: string): Observable<ResultModelAbstract>;
 
+    public abstract GetDetailFilm (filmId: string):  Observable<FilmModelAbstract>;
 
-    public abstract GetCountOfPages () : Number;
+
 
     
 }

@@ -4,6 +4,7 @@ import {PlatformAbstractService, ParameterItem} from '../../services/platform-se
 import {SearhModelAbstractService} from '../../model/search-model/abstract/searh-model-abstract.service';
 //import {HttpRequestServer} from '../../model/http-request-model';
 import { NgForm, ReactiveFormsModule  } from "@angular/forms";
+import {LoaderService} from '../../services/additional/loader';
 
 
 @Component({
@@ -17,16 +18,15 @@ export class SearchFilmComponent implements OnInit {
 
    //  is form  try to sumbitting
    formSubmitted: boolean;
-   showLoadingIndicator: boolean = false;
 
   // _platform - current platform to serach films
-  constructor(private router: Router, public _platform :PlatformAbstractService) { 
+  constructor(private router: Router, public _platform :PlatformAbstractService, private loader: LoaderService) { 
     this.router.events.subscribe((routerEvent: Event)=> {
       if (routerEvent instanceof NavigationStart) {
-        this.showLoadingIndicator = true;
+        this.loader.display(true);
       }
       else if (routerEvent instanceof NavigationEnd) {
-          this.showLoadingIndicator = false;
+        this.loader.display(false);
       }
     });
   }
@@ -36,14 +36,12 @@ export class SearchFilmComponent implements OnInit {
   {
     this.formSubmitted = true;
     if (form.valid) {
-      this.showLoadingIndicator = true;
-      console.log (this.showLoadingIndicator);
+
       this._platform.GetResultCollection().subscribe(response => {
-        console.log(response.isValidAnswerFromServer);
-        if (response.isValidAnswerFromServer) {
-          this.showLoadingIndicator = false;
-          console.log (this.showLoadingIndicator);
-          this.router.navigateByUrl("viewFilms");  
+
+        if (response.isValidAnswerFromServer) {      
+          this.router.navigateByUrl("viewFilms"); 
+
         }
       });
       this.formSubmitted = false;

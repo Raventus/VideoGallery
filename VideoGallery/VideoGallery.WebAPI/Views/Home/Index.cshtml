@@ -20,7 +20,7 @@
                                                         , new { controller = "videoGalleryApi", HttpRoute = true }
                                                         , "videoGalleryApiRoute"
                                                     )
-        
+
 
     </h3>
     <br />
@@ -30,6 +30,13 @@
         @Html.TextBox("FilmName");
         <input type="submit" value="Получить фильмы" />
 
-        
+
     }
+    Проверка детального запроса на фильм (/tt1375666 - начало):
+    @Html.RouteLink(
+                                                       @Url.RouteUrl("videoGalleryApiDetailRoute", new { controller = "videoGalleryApi",
+                                                          ID = "tt1375666", httproute = "" })
+                                                       , new { controller = "videoGalleryApi", ID = "tt1375666", HttpRoute = true }
+                                                       , "videoGalleryApiDetailRoute"
+                                                   )
 </div>

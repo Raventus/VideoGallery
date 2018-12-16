@@ -54,5 +54,12 @@ namespace VideoGallery.PlatformModel.SearchStrategyConcrete
             _builder.BuildPageNumber(page);
             return _builder.GetQueryObject();
         }
+
+        public override IQueryModel ConstructQuerySearchByID(string ID)
+        {
+            _builder.ClearQueryObject();
+            _builder.BuildID(ID);
+            return _builder.GetQueryObject();
+        }
     }
 }
