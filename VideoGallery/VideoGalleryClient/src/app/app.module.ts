@@ -45,34 +45,36 @@ const SERVER_PORT = 4100;
 
 @NgModule({
   declarations: [
-    AppComponent,
-    MenuComponent,
-    GreetingsComponent,
-    SearchFilmComponent,
-    ContactsComponent,
-    ViewFilmsComponent,
-    PagerDirective
+      AppComponent
+    , MenuComponent
+    , GreetingsComponent
+    , SearchFilmComponent
+    , ContactsComponent
+    , ViewFilmsComponent
+    , PagerDirective
     , DetailFilmComponent
-    ,LoaderComponent
-    
+    , LoaderComponent
   ],
+
   imports: [
-    HttpClientModule, 
-    BrowserModule,
-    FormsModule, 
-    ReactiveFormsModule, 
-    RouterModule.forRoot(ROUTES)
+    HttpClientModule
+    , BrowserModule
+    , FormsModule
+    , ReactiveFormsModule
+    , RouterModule.forRoot(ROUTES)
   ],
+
   providers: [
-    {provide: PlatformAbstractService, useClass: ImdbPlatformService }
+      {provide: PlatformAbstractService, useClass: ImdbPlatformService }
     , {provide: SearhModelAbstractService, useClass: ImdbSearchModelService}
     , {provide: HttpRequestAbstractService, useClass: HttpRequestImdbService}
     , AuthorModelService
-    ,LoaderService
-    ,{provide: REQUESTURL, useValue: `http://${location.hostname}:${SERVER_PORT}/api/VideoGalleryApi/`}
-    ,{provide: REQUESTURLIMDB, useValue: `http://${location.hostname}:${SERVER_PORT}/api/VideoGalleryApi/`}
-    ,{provide:ResultModelAbstract, useClass:ResultModelIMDB}
+    , LoaderService
+    , {provide: REQUESTURL, useValue: `http://${location.hostname}:${SERVER_PORT}/api/VideoGalleryApi/`}
+    , {provide: REQUESTURLIMDB, useValue: `http://${location.hostname}:${SERVER_PORT}/api/VideoGalleryApi/`}
+    , {provide:ResultModelAbstract, useClass:ResultModelIMDB}
   ],
+  
   bootstrap: [AppComponent]
 })
 export class AppModule { }

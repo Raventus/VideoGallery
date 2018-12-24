@@ -11,15 +11,12 @@ import { from, Observable } from 'rxjs';
 import 'rxjs-compat';
 
 
-
-
 // служба для платформы IMDB
 @Injectable({
   providedIn: 'root'
 })
 export class ImdbPlatformService implements PlatformAbstractService {
-  
-    
+      
   // searchModel - служба для поиск0а моделей
   constructor(public searchModel:SearhModelAbstractService
             , public _resultFilmModel:ResultModelAbstract
@@ -43,18 +40,18 @@ export class ImdbPlatformService implements PlatformAbstractService {
   // кэш для фильмов, чтобы не лазить на сервер, если запрос уже был
   cacheCollectoin: Array<FilmModelIMDB[]>; 
 
-
-    HasFilmCollectionFromCache (page: string) : boolean {
-     if (this.cacheCollectoin[Number(page) - 1] === undefined) {
+  HasFilmCollectionFromCache(page: string): boolean {
+    if (this.cacheCollectoin[Number(page) - 1] === undefined) {
       return false;
-    }    
-    return true; 
+    }
+    return true;
   }       
  //   Получение коллекции фильмов для отображения
  // page - постраничный поиск внутри коллекции (если передается страница, то возможно извлечение коллекции из кеша)
   GetResultCollection (page?:string): Observable<ResultModelAbstract> {
     // проверка ведется ли поиск внутри коллекции
     let isNeedCasheSearch: boolean = (page !== undefined) ? true: false;
+
     if (isNeedCasheSearch)
     {
         // проверка есть ли текущая страница в кеше 
@@ -65,12 +62,14 @@ export class ImdbPlatformService implements PlatformAbstractService {
         }
     }
     // делаем запрос к серверу
-      if (page === undefined){
+      if (page === undefined) {
         this.cacheCollectoin = new Array<FilmModelIMDB[]>();
         page = "1";
       }
+
       this.fillQueryStringFromForm(page); 
       console.log ("Get collection from the server page: " + page);
+
       return this.httpserver.Get(this.queryString)
                     .map(item=> JSON.parse(item.Data) )
                     .map(dataitem => {
@@ -78,6 +77,7 @@ export class ImdbPlatformService implements PlatformAbstractService {
                       this._resultFilmModel.currentFilmCollectionForView = dataitem.Search;
                       this._resultFilmModel.totalcountOfFilmsByKeyword = dataitem.totalResults;
                       this.cacheCollectoin[Number(page) - 1] = dataitem.Search;
+                      
                       return this._resultFilmModel;
                     });
   }
