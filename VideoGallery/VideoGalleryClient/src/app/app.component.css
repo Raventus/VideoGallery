@@ -1,5 +1,4 @@
 
-
 .paddingAndmarginAll {
     padding: 5% !important; 
     margin: 1%;
@@ -17,4 +16,11 @@ p, label, input  .textDecoration, h3 {
     font-size: large;
     font-weight: 400;
     font-family: sans-serif;
+}
+
+.position {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+
 }

@@ -46,6 +46,7 @@ namespace VideoGallery.WebAPI.Controllers
         [System.Web.Http.HttpGet]
         public async Task<JsonResult> GetVideoGalleryByFullNameAsync (string filmName = "Fast and Furious", string page = "1")
         {
+            Thread.Sleep(2000);
             return  new JsonResult()
                         { Data = await _searchServer.GetListOfFilmsByFilmNameSearchQuery(filmName, page) };
         }
@@ -58,6 +59,7 @@ namespace VideoGallery.WebAPI.Controllers
         [System.Web.Http.HttpGet]
         public async Task<JsonResult> GetConcreteFilmByIDAsync(string ID)
         {
+            Thread.Sleep(2000);
             return new JsonResult()
             { Data = await _searchServer.GetConcreteFilmByID(ID)};
         }

@@ -21,14 +21,7 @@ export class SearchFilmComponent implements OnInit {
 
   // _platform - current platform to serach films
   constructor(private router: Router, public _platform :PlatformAbstractService, private loader: LoaderService) { 
-    this.router.events.subscribe((routerEvent: Event)=> {
-      if (routerEvent instanceof NavigationStart) {
-        this.loader.display(true);
-      }
-      else if (routerEvent instanceof NavigationEnd) {
-        this.loader.display(false);
-      }
-    });
+    
   }
 
   // form submit function and navigate to viewFilms
@@ -39,7 +32,7 @@ export class SearchFilmComponent implements OnInit {
 
       this._platform.GetResultCollection().subscribe(response => {
 
-        if (response.isValidAnswerFromServer) {      
+        if (response.isValidAnswerFromServer) {     
           this.router.navigateByUrl("viewFilms"); 
 
         }

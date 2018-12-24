@@ -21,12 +21,10 @@ import {FilmModelAbstract} from '../../model/film-model/abstract/film-model-abst
 export class ViewFilmsComponent implements OnInit {
 
   constructor(private _platform: PlatformAbstractService, private loader: LoaderService, private router: Router) {
-   
   }
 
   ngOnInit() {
     console.log ("ViewFilms OnInit invoke")
-
     this._platform.GetResultCollection("1").subscribe(
       collection => {
         this._resultSearch = collection;
