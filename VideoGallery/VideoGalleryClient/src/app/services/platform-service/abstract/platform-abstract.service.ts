@@ -10,35 +10,34 @@ import { from, Observable } from 'rxjs';
 @Injectable()
 export abstract class  PlatformAbstractService {
 
-    constructor(public searchModel:SearhModelAbstractService
-        , public _resultFilmModel:ResultModelAbstract
+     
+     public abstract nameOfPlatform: string; // имя платформы 
+     public abstract ListOfParametersToSearch: ParameterItem[]; // список параметров для поиска (текстовый)
+     cacheCollectoin: Array<FilmModelAbstract[]>;
+     public abstract HasFilmCollectionFromCache(page: string): boolean;
+
+    constructor(public searchModel: SearhModelAbstractService
+        , public _resultFilmModel: ResultModelAbstract
         , public httpserver: HttpRequestAbstractService) {
-}  
-     // имя платформы
-     public abstract nameOfPlatform : string;
-    // список параметров для поиска (текстовый)
-    public abstract ListOfParametersToSearch: ParameterItem [];
-   
-    cacheCollectoin: Array<FilmModelAbstract[]>; 
-    public abstract HasFilmCollectionFromCache (page: string) : boolean;
-    
-    
-    public abstract GetResultCollection (page?: string): Observable<ResultModelAbstract>;
+    }
 
-    public abstract GetDetailFilm (filmId: string):  Observable<FilmModelAbstract>;
+    public abstract GetResultCollection(page?: string): Observable<ResultModelAbstract>;
+
+    public abstract GetDetailFilm(filmId: string): Observable<FilmModelAbstract>;
 
 
 
-    
+
 }
 
 
 // текстовое представление параметра для поиска
 export class ParameterItem {
-    // имя параметра 
-    parameterName : string;
-    
-    constructor (name: string) {
+     
+    parameterName: string; // имя параметра
+
+    constructor(name: string) {
+        
         this.parameterName = name;
     }
-  }
+}

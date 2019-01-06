@@ -1,17 +1,12 @@
-
 <div class="sticky-top">  
   <app-menu></app-menu>
 </div>
 
 <div>
   <router-outlet></router-outlet>
-  <button (click)="toggle()">
-    {{isShowIndicator}}
-  </button>
 </div> 
 
-<div *ngIf="isShowIndicator" class="position">
-  <app-loader > </app-loader> 
-</div>
+<app-loader > </app-loader> 
+
 
 

@@ -8,33 +8,40 @@ import  {AuthorModelService} from '../../services/additional/author-model-servic
 })
 export class ContactsComponent implements OnInit {
 
-  constructor(private _author :AuthorModelService) { }
+  ngOnInit() {
+  }
+
+  constructor(private _author :AuthorModelService) { 
+  }
 
   getAuthorName (): string {
+
     return this._author.getFullName();
   }
 
   checkValidContactInformation() : boolean {
+
     return this._author.CheckValidContactsParameters();
   }
 
   getPhoneNumber(): string {
+
     return this._author.Phone;
   }
 
   getEmail(): string {
+
     return this._author.EMail;
   }
 
   // test/ need to deleted
   checkPhone(): boolean {
+
     return this._author.checkValidPhone();
   }
+  
   checkEmail(): boolean {
+
     return this._author.checkValidEmail();
   }
-
-  ngOnInit() {
-  }
-
 }

@@ -8,16 +8,10 @@ import {DetailFilmComponent} from './view/detail-film/detail.film.component';
 export const ROUTES: Routes = [
     
     { path: '', component: GreetingsComponent },
-    
     { path: "greetings", component: GreetingsComponent },
-
     { path: "searchFilms", component: SearchFilmComponent },
-
     { path: "contacts", component: ContactsComponent },
-
     { path: "detailFilm/:filmID", component: DetailFilmComponent },
-
     { path: "viewFilms", component: ViewFilmsComponent},
-    
     { path: "**", redirectTo: "/greetings" }
 ]

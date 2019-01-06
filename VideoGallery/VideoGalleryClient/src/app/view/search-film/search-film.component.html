@@ -4,7 +4,7 @@
     The current platform to search: {{_platform.nameOfPlatform}}
   </p>
   <!--Form to search-->
-  <form novalidate [formGroup]="_platform.form"  (ngSubmit)="DoSearch(_platform.form)">
+  <form novalidate [formGroup]="_platform.form" (ngSubmit)="DoSearch(_platform.form)">
     <!--div for users mistake-->
     <div class="bg-warning p-a-1 m-b-1 textDecoration" *ngIf="formSubmitted && form.invalid">
       <h4>Try to fix this mistakes:</h4>
@@ -17,12 +17,13 @@
 
     <div class="form-group  col-4 col-offset-4" *ngFor="let control of _platform.form.FormFilmControls">
       <label>{{control._name}}</label>
-      <input class="form-control" [(ngModel)] = "_platform.searchModel[control._property]" name="{{control._property}}"
-      formControlName = "{{control._property}}" placeholder="{{control._placeholder}}" />
+      <input class="form-control" [(ngModel)]="_platform.searchModel[control._property]" name="{{control._property}}"
+        formControlName="{{control._property}}" placeholder="{{control._placeholder}}" />
     </div>
 
     <div class="btn-group col-4 col-offset-4">
-      <button class="btn btn-primary " type="submit" [disabled]="formSubmitted &&  _platform.form.invalid" [class.btn-secondary]="formSubmitted &&  _platform.form.invalid">
+      <button class="btn btn-primary " type="submit" [disabled]="formSubmitted &&  _platform.form.invalid"
+        [class.btn-secondary]="formSubmitted &&  _platform.form.invalid">
         <i class="fa fa-search"></i>
         Search
       </button>

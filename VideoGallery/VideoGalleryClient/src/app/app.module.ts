@@ -5,6 +5,8 @@ import { HttpClientModule} from "@angular/common/http";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {RouterModule, NavigationStart, NavigationEnd, ActivatedRoute} from "@angular/router";
 
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { LoaderInterceptorService } from './services/additional/LoaderInterception';
 
 //Компоненты
 import { AppComponent } from './app.component';
@@ -16,12 +18,12 @@ import { ContactsComponent } from './view/contacts/contacts.component';
 import { DetailFilmComponent } from './view/detail-film/detail.film.component';
 import {LoaderComponent} from './view/shared/components/loader/loader.component';
 
-
 import {PlatformAbstractService} from './services/platform-service/abstract/platform-abstract.service';
 import {ImdbPlatformService} from './services/platform-service/imdb/imdb-platform-model.service';
 
 import  {AuthorModelService} from './services/additional/author-model-service';
 import {LoaderService} from './services/additional/loader';
+import {AuthService} from './services/auth/auth-service';
 
 import {SearhModelAbstractService} from './model/search-model/abstract/searh-model-abstract.service';
 import {ImdbSearchModelService} from './model/search-model/imdb/imdb-search-model.service';
@@ -35,13 +37,8 @@ import {ResultModelIMDB} from './model/result-model/imdb/result-model-imdb';
 // структурные директивы
 import {PagerDirective} from "./view/shared/directives/pager.directive";
 
-
 import  {ROUTES} from './app.routes';
-
-
-
 const SERVER_PORT = 4100;
-
 
 @NgModule({
   declarations: [
@@ -70,6 +67,8 @@ const SERVER_PORT = 4100;
     , {provide: HttpRequestAbstractService, useClass: HttpRequestImdbService}
     , AuthorModelService
     , LoaderService
+    , AuthService
+    , {provide: HTTP_INTERCEPTORS, useClass: LoaderInterceptorService, multi: true}
     , {provide: REQUESTURL, useValue: `http://${location.hostname}:${SERVER_PORT}/api/VideoGalleryApi/`}
     , {provide: REQUESTURLIMDB, useValue: `http://${location.hostname}:${SERVER_PORT}/api/VideoGalleryApi/`}
     , {provide:ResultModelAbstract, useClass:ResultModelIMDB}

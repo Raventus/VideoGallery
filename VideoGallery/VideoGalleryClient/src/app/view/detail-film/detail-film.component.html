@@ -1,170 +1,163 @@
 <div class="row mx-auto">
-    <p class="mx-auto">{{viewModel.Title}} - {{viewModel.Year}} ({{viewModel.Type}}) Marks:
-        {{viewModel.imdbRating}} ({{viewModel.imdbVotes}})</p>
-</div>
-
-<div class="row justify-content-center mx-auto">
-      <!-- Poster -->
-    <div class=" col-xl-4 col-lg-4 col-md-6 col-sm-6 justify-content-center text-center" style="background-color: red">
-      
-        <img [src]="viewModel.Poster">
+        <p class="mx-auto">{{viewModel.Title}} - {{viewModel.Year}} ({{viewModel.Type}}) Marks:
+            {{viewModel.imdbRating}} ({{viewModel.imdbVotes}})</p>
     </div>
-      <!-- Property table -->
-    <div class=" col-xl-8 col-lg-8 col-md-10 col-sm-10 justify-content-center">
-
-
-
-        <div class="row">
-            <div class="col-xl-4 col-lg-2 col-md-6 col-sm-6 justify-content-end">
-                Released:
-            </div>
-            <div class="col-6">
-                {{viewModel.Released}}
-            </div>
+    
+    <div class="row justify-content-center mx-auto">
+          <!-- Poster -->
+        <div class=" col-xl-4 col-lg-4 col-md-6 col-sm-8 justify-content-center text-center">
+            <img [src]="viewModel.Poster">
         </div>
-
-
-        <div class="row">
-            <div class="col-xl-4 col-lg-2 col-md-6 col-sm-6 justify-content-end">
-                Genre:
+    
+          <!-- Property table -->
+        <div class=" col-xl-8 col-lg-8 col-md-6 col-sm-6 ">
+    
+            <div class="row">
+                <div class="col-xl-2 col-lg-2 col-md-2 col-sm-6 justify-content-end">
+                    Released:
+                </div>
+                <div class="col-6 justify-content-start">
+                    {{viewModel.Released}}
+                </div>
             </div>
-            <div class="col-6">
-                {{viewModel.Genre}}
+    
+            <div class="row">
+                <div class="col-xl-2 col-lg-2 col-md-3 col-sm-6 justify-content-end">
+                    Genre:
+                </div>
+                <div class="col-6">
+                    {{viewModel.Genre}}
+                </div>
             </div>
-        </div>
-
-
-        <div class="row">
-            <div class="col-xl-4 col-lg-2 col-md-6 col-sm-6 justify-content-end">
-                DVD:
+    
+            <div class="row">
+                <div class="col-xl-2 col-lg-2 col-md-3 col-sm-6 justify-content-end">
+                    DVD:
+                </div>
+                <div class="col-6">
+                    {{viewModel.DVD}}
+                </div>
             </div>
-            <div class="col-6">
-                {{viewModel.DVD}}
+    
+            <div class="row">
+                <div class="col-xl-2 col-lg-2 col-md-3 col-sm-6 justify-content-end">
+                    Runtime:
+                </div>
+                <div class="col-6">
+                    {{viewModel.Runtime}}
+                </div>
             </div>
-        </div>
-
-        <div class="row">
-            <div class="col-xl-4 col-lg-2 col-md-6 col-sm-6 justify-content-end">
-                Runtime:
+    
+            <div class="row">
+                <div class="col-xl-2 col-lg-2 col-md-3 col-sm-6 justify-content-end">
+                    Director:
+                </div>
+                <div class="col-6">
+                    {{viewModel.Director}}
+                </div>
             </div>
-            <div class="col-6">
-                {{viewModel.Runtime}}
+    
+            <div class="row">
+                <div class="col-xl-2 col-lg-2 col-md-3 col-sm-6 justify-content-end">
+                    Writer:
+                </div>
+                <div class="col-6">
+                    {{viewModel.Writer}}
+                </div>
             </div>
-        </div>
-
-
-        <div class="row">
-            <div class="col-xl-4 col-lg-2 col-md-6 col-sm-6 justify-content-end">
-                Director:
+    
+            <div class="row">
+                <div class="col-xl-2 col-lg-2 col-md-3 col-sm-6 justify-content-end">
+                    Rated:
+                </div>
+                <div class="col-6">
+                    {{viewModel.Rated}}
+                </div>
             </div>
-            <div class="col-6">
-                {{viewModel.Director}}
+    
+            <div class="row">
+                <div class="col-xl-2 col-lg-2 col-md-3 col-sm-6 justify-content-end">
+                    Country:
+                </div>
+                <div class="col-6">
+                    {{viewModel.Country}}
+                </div>
             </div>
-        </div>
-
-
-        <div class="row">
-            <div class="col-xl-4 col-lg-2 col-md-6 col-sm-6 justify-content-end">
-                Writer:
+    
+    
+            <div class="row">
+                <div class="col-xl-2 col-lg-2 col-md-3 col-sm-6 justify-content-end">
+                    BoxOffice:
+                </div>
+                <div class="col-6">
+                    {{viewModel.BoxOffice}}
+                </div>
             </div>
-            <div class="col-6">
-                {{viewModel.Writer}}
+    
+    
+            <div class="row">
+                <div class="col-xl-2 col-lg-2 col-md-3 col-sm-6 justify-content-end">
+                    Production:
+                </div>
+                <div class="col-6">
+                    {{viewModel.Production}}
+                </div>
             </div>
-        </div>
-
-
-        <div class="row">
-            <div class="col-xl-4 col-lg-2 col-md-6 col-sm-6 justify-content-end">
-                Rated:
+    
+    
+            <div class="row">
+                <div class="col-xl-2 col-lg-2 col-md-3 col-sm-6 justify-content-end">
+                    Website:
+                </div>
+                <div class="col-6">
+                    <a href="{{viewModel.Website}}" target="_blank">{{viewModel.Website}} </a>
+                </div>
             </div>
-            <div class="col-6">
-                {{viewModel.Rated}}
-            </div>
-        </div>
-
-        <div class="row">
-            <div class="col-xl-4 col-lg-2 col-md-6 col-sm-6 justify-content-end">
-                Country:
-            </div>
-            <div class="col-6">
-                {{viewModel.Country}}
-            </div>
-        </div>
-
-
-        <div class="row">
-            <div class="col-xl-4 col-lg-2 col-md-6 col-sm-6 justify-content-end">
-                BoxOffice:
-            </div>
-            <div class="col-6">
-                {{viewModel.BoxOffice}}
-            </div>
-        </div>
-
-
-        <div class="row">
-            <div class="col-xl-4 col-lg-2 col-md-6 col-sm-6 justify-content-end">
-                Production:
-            </div>
-            <div class="col-6">
-                {{viewModel.Production}}
-            </div>
-        </div>
-
-
-        <div class="row">
-            <div class="col-xl-4 col-lg-2 col-md-6 col-sm-6 justify-content-end">
-                Website:
-            </div>
-            <div class="col-6">
-                <a href="{{viewModel.Website}}" target="_blank">{{viewModel.Website}} </a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xl-4 col-lg-2 col-md-6 col-sm-6 justify-content-end">
-                IMDB page:
-            </div>
-            <div class="col-6">
-                <a href="{{viewModel.Reference}}" target="_blank">{{viewModel.Reference}} </a>
-            </div>
+            <!-- <div class="row">
+                <div class="col-xl-2 col-lg-2 col-md-2 col-sm-6 justify-content-end">
+                    IMDB page:
+                </div>
+                <div class="col-6">
+                    <a href="{{viewModel.Reference}}" target="_blank">{{viewModel.Reference}} </a>
+                </div>
+            </div> -->
         </div>
     </div>
-</div>
-
-<div class="row">
-    <div class=" offset-1 col-3">
-        <div class="row">
-            Plot:
+    
+    <div class="row">
+        <div class=" offset-1 col-3">
+            <div class="row">
+                Plot:
+            </div>
+            <div class="row mx-auto">
+                {{viewModel.Plot}}
+            </div>
         </div>
-        <div class="row mx-auto">
-            {{viewModel.Plot}}
+        <div class="offset-1 col-3">
+            <div class="row">
+                Actors:
+            </div>
+            <div class="row mx-auto">
+                {{viewModel.Actors}}
+            </div>
         </div>
+        <div class="offset-1 col-3">
+            <div class="row">
+                Awards:
+            </div>
+            <div class="row mx-auto">
+                {{viewModel.Awards}}
+            </div>
+        </div>
+        <!-- <div class="col-3">
+            <div class="row">
+                Ratings:
+            </div>
+            <div class="row mx-auto">
+                {{viewModel.Ratings}}
+            </div>
+        </div> -->
     </div>
-    <div class="offset-1 col-3">
-        <div class="row">
-            Actors:
-        </div>
-        <div class="row mx-auto">
-            {{viewModel.Actors}}
-        </div>
-    </div>
-    <div class="offset-1 col-3">
-        <div class="row">
-            Awards:
-        </div>
-        <div class="row mx-auto">
-            {{viewModel.Awards}}
-        </div>
-    </div>
-    <!-- <div class="col-3">
-        <div class="row">
-            Ratings:
-        </div>
-        <div class="row mx-auto">
-            {{viewModel.Ratings}}
-        </div>
-    </div> -->
-</div>
-
-
-          
+    
+    
+              

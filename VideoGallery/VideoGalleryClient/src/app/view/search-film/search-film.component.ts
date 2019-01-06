@@ -1,10 +1,8 @@
-import { Component, OnInit, ApplicationRef } from '@angular/core';
-import { Router , Event, NavigationStart, NavigationEnd} from "@angular/router";
-import {PlatformAbstractService, ParameterItem} from '../../services/platform-service/abstract/platform-abstract.service';
-import {SearhModelAbstractService} from '../../model/search-model/abstract/searh-model-abstract.service';
-//import {HttpRequestServer} from '../../model/http-request-model';
-import { NgForm, ReactiveFormsModule  } from "@angular/forms";
-import {LoaderService} from '../../services/additional/loader';
+import { Component, OnInit} from '@angular/core';
+import { Router} from "@angular/router";
+import { PlatformAbstractService, ParameterItem } from '../../services/platform-service/abstract/platform-abstract.service';
+import { NgForm, ReactiveFormsModule } from "@angular/forms";
+import { LoaderService } from '../../services/additional/loader';
 
 
 @Component({
@@ -14,27 +12,27 @@ import {LoaderService} from '../../services/additional/loader';
 })
 export class SearchFilmComponent implements OnInit {
 
-   errorMessage: string;
+  errorMessage: string;
+  formSubmitted: boolean; //  is form  try to sumbitting
 
-   //  is form  try to sumbitting
-   formSubmitted: boolean;
+  ngOnInit() {
+  }
 
   // _platform - current platform to serach films
-  constructor(private router: Router, public _platform :PlatformAbstractService, private loader: LoaderService) { 
-    
+  constructor(private router: Router
+    , public _platform: PlatformAbstractService
+    , private loader: LoaderService) {
   }
 
   // form submit function and navigate to viewFilms
-  DoSearch(form: NgForm)
-  {
+  DoSearch(form: NgForm) {
+
     this.formSubmitted = true;
     if (form.valid) {
 
       this._platform.GetResultCollection().subscribe(response => {
-
-        if (response.isValidAnswerFromServer) {     
-          this.router.navigateByUrl("viewFilms"); 
-
+        if (response.isValidAnswerFromServer) {
+          this.router.navigateByUrl("viewFilms");
         }
       });
       this.formSubmitted = false;
@@ -43,10 +41,5 @@ export class SearchFilmComponent implements OnInit {
       this.errorMessage = "Form Data Invalid";
     }
   }
-
-  ngOnInit() {
-
-  }
- 
 
 }

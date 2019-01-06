@@ -1,4 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top " >
+
+    <div class="navbar-header">
     <!--Brand-->
     <a class="navbar-brand" href="https://sparkequation.com/">
         <img src="https://sparkequation.com/images/logo_white.svg" alt="Spark" height="100" width="100">
@@ -9,23 +11,20 @@
         aria-expanded="false" aria-label="Toogle">
         <span class="navbar-toggler-icon"></span>
     </button>
-
+</div>
     <!--Menu-->
     <div class="navbar-collapse collapse" id="navBarMenuContent">
-        <!--<ul class="navbar-nav  mr-auto"> --->
-            <button *ngFor="let item of MenuItemsArr" class="nav-item col-lg-4 btn-lg fa" routerLink={{item.routerNavigator}} style="height: 5em"
-            [ngClass]="{'btn-success': item.isActive , 'btn-secondary': !item.isActive }" (click)=changeActive(item)>
 
-            <span [class]=item.fontAwesomeClass ></span> 
+        <button *ngFor="let item of MenuItemsArr" class="nav-item  col-md-12 col-lg-3 col-xl-3 btn-lg fa" routerLink={{item.routerNavigator}}
+            style="height: 5em" [ngClass]="{'btn-success': item.isActive , 'btn-secondary': !item.isActive }" (click)=changeActive(item)>
+            <span [class]=item.fontAwesomeClass></span>
             {{item.name}}
         </button>
-           
-            <!-- <li *ngFor="let item of MenuItemsArr" class="nav-item col-lg-4">
-                <a class="nav-link btn btn-primary btn-block text-dark" role="button" routerLink={{item.routerNavigator}}
-                    [ngClass]="{'btn-success': item.isActive , 'btn-primary': !item.isActive }" (click)=changeActive(item)>
-                    {{item.name}}
-                </a>
-            </li>
-        </ul>--->
+
+        <div class = "nav-item  col-md-12 col-lg-3 col-xl-3 ">
+            <a href="#" (click)="auth.login()" *ngIf="!auth.isAuthenticated()" class=" btn-lg" style="height: 5em">LogIn</a>
+            <a href="#" *ngIf="auth.isAuthenticated()" (click)="auth.logout()">{{ auth.userProfile?.nickname }} (Logout)
+            </a>
+            </div>
     </div>
 </nav>

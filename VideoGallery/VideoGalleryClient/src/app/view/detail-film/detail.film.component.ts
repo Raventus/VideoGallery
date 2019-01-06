@@ -19,8 +19,7 @@ export class DetailFilmComponent implements OnInit {
   constructor(private platform:PlatformAbstractService, actRoute: ActivatedRoute) { 
     this.filmId = actRoute.snapshot.params["filmID"];
     platform.GetDetailFilm(this.filmId).subscribe(data=>{
-      this.viewModel = data;
-      console.log ("imdbID " + this.viewModel.imdbID);   
+      this.viewModel = data; 
     });
   }
 
