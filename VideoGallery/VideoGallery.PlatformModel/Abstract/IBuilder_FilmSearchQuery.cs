@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace VideoGallery.PlatformModel.Abstract
 {
     /// <summary>
-    /// Интерфейс строителя строки запроса 
+    /// Интерфейс строителя строки запрос
     /// </summary>
     public interface IBuilder_FilmSearchQuery
     {
